@@ -1,0 +1,15 @@
+# Build and Gradle files
+build/
+out/
+.gradle/
+.gradletasknamecache
+
+# IntelliJ project files
+.idea/
+*.ipr
+*.iws
+*.iml
+
+# Generated UI files
+node_modules/
+*/src/main/webapp/libs/

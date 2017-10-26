@@ -1,0 +1,24 @@
+{
+  "name": "Review System Demo",
+  "version": "0.0.0",
+  "author": "Thomas Uhrig",
+  "devDependencies": {
+    "angular-mocks": "1.5.8",
+    "bower": "^1.8.2",
+    "grunt": "^1.0.1",
+    "grunt-bower-task": "^0.4.0",
+    "grunt-cli": "^1.2.0",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-karma": "^2.0.0",
+    "jasmine-core": "^2.3.4",
+    "jasmine-expect": "^2.0.2",
+    "jasmine-promise-matchers": "^2.0.2",
+    "karma": "^1.3.0",
+    "karma-jasmine": "^0.3.6",
+    "karma-jasmine-matchers": "^2.0.2",
+    "karma-ng-html2js-preprocessor": "^1.0.0",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "lodash": "^4.17.4"
+  }
+}
