@@ -17,21 +17,25 @@ public class Review {
     private String rejectionReason;
     private boolean approved;
 
+    public Review(ReviewId reviewId, String subject, String content) {
+        this.reviewId = reviewId;
+        this.subject = subject;
+        this.content = content;
+    }
+
     public void check() {
         if(subject.length() < 5) {
             reject("Subject is too short");
-        }
-        if(subject.length() > 100) {
+        } else if(subject.length() > 100) {
             reject("Subject is too long");
-        }
-        if(content.length() < 50) {
+        } else if(content.length() < 100) {
             reject("Content is too short");
-        }
-        if(content.length() > 500) {
+        } else if(content.length() > 500) {
             reject("Content is too long");
             log.debug("Content is too long. [reviewId={}, length={}, allowed={}]", reviewId, content.length(), 500);
+        } else {
+            approve();
         }
-        approve();
     }
 
     private void reject(String reason) {
