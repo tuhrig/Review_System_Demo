@@ -48,3 +48,7 @@ Run it:
     ./gradlew user_interface_system:bootrun
     
 Go to: http://localhost:9002
+
+# Test
+
+    ./gradlew check
