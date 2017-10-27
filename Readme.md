@@ -56,6 +56,8 @@ Run it:
     
 Go to: http://localhost:9002
 
+ActiveMQ Admin Console: http://localhost:8161/admin (Credentials: admin / admin)
+
 # Test
 
 ## Java Tests
