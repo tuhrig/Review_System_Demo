@@ -15,23 +15,25 @@ Note that this demo is highly opinionated and might not fit to your needs or pre
 # What to see in this demo
 
 - Usage of ActiveMQ to enable an async message-driven communication between system.
-- Basic project setup for Karma JavaScript tests with Grunt
+- Basic project setup for Spring Boot (multi-module) projects with Gradle.
+- Setup of an embedded Zuul proxy to route requests from the AngularJS UI to different backend services.
+- Usage of Docker Compose for a local development environment.
 
 # Systems
 
-## User Interface System
+## User Interface System (port 9002)
 
 - AngularJS based user interface
 - Allows to submit and read reviews
 - The backend is a Zuul proxy which forwards requests (to the review system)
 
-## Review System
+## Review System (port 9001)
 
 - Takes and persists all reviews
 - Throws _NEW REVIEW_ events to inform other system about new reviews
 - Listens for _APPROVED REVIEW_ events and _REJECTED REVIEW_ events
 
-## Checking System
+## Checking System (port 9000)
 
 - Checks incoming reviews to either approve or reject them
 - Listens for _NEW REVIEW_ events
@@ -64,3 +66,10 @@ Go to: http://localhost:9002
     
     cd User_Interface_System/
     grunt check
+    
+# Links to my related blog posts
+    
+- Using ActiveMQ virtual topics to send events between systems and handle errors (failing event consumption).     
+ // http://tuhrig.de/effective-error-handling-for-activemq-topics    
+ 
+- A comparison of various Java and JavaScript build tools (used in this project). // http://tuhrig.de/java-vs-javascript-build-tools 
