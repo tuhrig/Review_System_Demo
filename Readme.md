@@ -12,6 +12,11 @@ Note that this demo is highly opinionated and might not fit to your needs or pre
 - Each review must be checked and approved (or rejected).
 - All approved reviews can be listed.
 
+# What to see in this demo
+
+- Usage of ActiveMQ to enable an async message-driven communication between system.
+- Basic project setup for Karma JavaScript tests with Grunt
+
 # Systems
 
 ## User Interface System
@@ -51,4 +56,11 @@ Go to: http://localhost:9002
 
 # Test
 
+## Java Tests
+
     ./gradlew check
+    
+## JavaScript Tests
+    
+    cd User_Interface_System/
+    grunt check
