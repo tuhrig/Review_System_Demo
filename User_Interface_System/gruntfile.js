@@ -24,12 +24,6 @@ module.exports = function (grunt) {
             },
             single: {
                 singleRun: true
-            },
-
-            // profile that can be used during development. It will automatically run tests when they are developed.
-            continuous: {
-                singleRun: false,
-                autoWatch: true
             }
         },
 
@@ -80,6 +74,5 @@ module.exports = function (grunt) {
 
     // Custom grunt tasks
     grunt.registerTask('setup', ['bower:install', 'concat']);
-    grunt.registerTask('check', ['setup', 'test']);
-    grunt.registerTask('test', ['setup', 'karma:single']);
+    grunt.registerTask('check', ['setup', 'karma:single']);
 };

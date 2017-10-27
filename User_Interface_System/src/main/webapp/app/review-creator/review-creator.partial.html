@@ -1,0 +1,50 @@
+<form name="submitReviewForm" class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Subject</label>
+        <div class="col-sm-10">
+            <input
+                    type="text"
+                    class="form-control"
+                    name="subject"
+                    ng-required="true"
+                    ng-model="$ctrl.review.subject">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Rating</label>
+        <div class="col-sm-10">
+            <select
+                    class="form-control"
+                    name="rating"
+                    ng-required="true"
+                    ng-model="$ctrl.review.rating">
+                <option value="0">(0) Never ever again</option>
+                <option value="1">(1) Very poor</option>
+                <option value="2">(2) OK, but I've expected more</option>
+                <option value="3">(3) Well, I did a good job</option>
+                <option value="4">(4) Nice</option>
+                <option value="5">(5) The best thing I ever saw</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Review</label>
+        <div class="col-sm-10">
+            <textarea
+                    class="form-control"
+                    rows="3"
+                    name="content"
+                    ng-required="true"
+                    ng-model="$ctrl.review.content"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button
+                    type="button"
+                    class="btn btn-default"
+                    ng-disabled="submitReviewForm.$invalid"
+                    ng-click="$ctrl.submitReview()">Submit</button>
+        </div>
+    </div>
+</form>
