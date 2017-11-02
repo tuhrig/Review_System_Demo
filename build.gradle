@@ -26,3 +26,23 @@ subprojects {
         testCompile('org.springframework.boot:spring-boot-starter-test')
     }
 }
+
+// We want to ensure that everybody is building this project with the same Gradle version.
+// This ensures that we don't have any compatibility issues. To do so, we use the Gradle
+// Wrapper.
+//
+// Run this task in order to create the Gradle Wrapper files located in '/gradle/wrapper' as
+// well as the files '/gradlew' and '/gradlew.bat'. Note that these files are also under
+// version control. Execute this task only when the Gradle Wrapper version is increased.
+//
+// To run any Gradle task, don't use Gradle directly, but the generated Gradle Wrapper:
+//
+//  ./gradlew build
+//  ./graldew test
+//
+// This ensures that every Gradle task is run with the correct version!
+//
+// See: https://www.mkyong.com/gradle/how-to-use-gradle-wrapper
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.3'
+}
