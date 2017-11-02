@@ -8,7 +8,7 @@ import de.tuhrig.rsd.review.system.domain.ReviewFixtures;
 import de.tuhrig.rsd.review.system.domain.ReviewRepository;
 import de.tuhrig.rsd.review.system.domain.ReviewStatus;
 import de.tuhrig.rsd.review.system.infrastructure.jms.JmsConfig;
-import de.tuhrig.rsd.review.system.infrastructure.memory.MemoryReviewRepository;
+import de.tuhrig.rsd.review.system.infrastructure.memory.ReviewStubRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
         JmsConfig.class,
         ReviewRejectedEventListener.class,
         ReviewCheckingResultService.class,
-        MemoryReviewRepository.class
+        ReviewStubRepository.class
 })
 @TestPropertySource({
         "classpath:application.properties"

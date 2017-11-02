@@ -6,11 +6,11 @@ import org.junit.Test;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
-public class MemoryReviewRepositoryTest {
+public class ReviewStubRepositoryTest {
 
     @Test
     public void should_SaveReview() throws Exception {
-        MemoryReviewRepository memoryReviewRepository = new MemoryReviewRepository();
+        ReviewStubRepository memoryReviewRepository = new ReviewStubRepository();
         Review review = ReviewFixtures.anOpenFiveStarSmartphoneReview();
         memoryReviewRepository.save(review);
         Review loaded = memoryReviewRepository.find(review.getReviewId());

@@ -1,16 +1,22 @@
 package de.tuhrig.rsd.review.system.domain;
 
 import com.fasterxml.jackson.annotation.JsonValue;
+import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.Embeddable;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.StringJoiner;
 
 @Getter
 @EqualsAndHashCode
-public class ReviewId {
+@Embeddable
+@NoArgsConstructor(access = AccessLevel.PRIVATE) // Hibernate default!
+public class ReviewId implements Serializable {
 
     private static Integer sequenceNumber = 1;
     private String reviewId;

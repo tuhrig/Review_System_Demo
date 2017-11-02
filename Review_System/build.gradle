@@ -1,3 +1,17 @@
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-activemq')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+
+    // As this is only a demo application, we don't use any real database,
+    // but an H2 in-memory database. It fully supports SQL and enables use
+    // to use Spring Data. We could easily replace it with a full fledged
+    // database such as Oracle.
+    compile('com.h2database:h2')
+
+    // We use Flyway to setup our database schema. Flyway will execute all
+    // scripts located at '/src/main/resources/db/migration' to setup the
+    // database and to do migrations.
+    //
+    // See: https://flywaydb.org
+    compile('org.flywaydb:flyway-core')
 }

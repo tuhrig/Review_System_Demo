@@ -4,15 +4,13 @@ import de.tuhrig.rsd.review.system.domain.Review;
 import de.tuhrig.rsd.review.system.domain.ReviewId;
 import de.tuhrig.rsd.review.system.domain.ReviewRepository;
 import de.tuhrig.rsd.review.system.domain.ReviewStatus;
-import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Service
-public class MemoryReviewRepository implements ReviewRepository {
+public class ReviewStubRepository implements ReviewRepository {
 
     private Set<Review> reviews = new HashSet<>();
 

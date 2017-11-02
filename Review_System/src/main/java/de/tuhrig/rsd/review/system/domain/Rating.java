@@ -1,13 +1,21 @@
 package de.tuhrig.rsd.review.system.domain;
 
 import com.fasterxml.jackson.annotation.JsonValue;
+import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
+@Embeddable
 @Getter
 @EqualsAndHashCode
+@NoArgsConstructor(access = AccessLevel.PRIVATE) // Hibernate default!
 public class Rating {
 
+    @Column(nullable = false)
     private int rating;
 
     public Rating(int rating) {

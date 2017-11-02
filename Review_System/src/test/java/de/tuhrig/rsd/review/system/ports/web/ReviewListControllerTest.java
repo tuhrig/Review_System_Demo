@@ -3,7 +3,7 @@ package de.tuhrig.rsd.review.system.ports.web;
 import de.tuhrig.rsd.review.system.domain.Review;
 import de.tuhrig.rsd.review.system.domain.ReviewFixtures;
 import de.tuhrig.rsd.review.system.domain.ReviewRepository;
-import de.tuhrig.rsd.review.system.infrastructure.memory.MemoryReviewRepository;
+import de.tuhrig.rsd.review.system.infrastructure.memory.ReviewStubRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +22,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.standal
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = {
         ReviewListController.class,
-        MemoryReviewRepository.class
+        ReviewStubRepository.class
 })
 public class ReviewListControllerTest {
 

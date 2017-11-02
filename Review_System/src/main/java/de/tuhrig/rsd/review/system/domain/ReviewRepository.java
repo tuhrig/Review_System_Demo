@@ -4,6 +4,6 @@ import java.util.List;
 
 public interface ReviewRepository {
     void save(Review review);
-    List<Review> findAllByStatus(ReviewStatus approved);
+    List<Review> findAllByStatus(ReviewStatus reviewStatus);
     Review find(ReviewId reviewId);
 }

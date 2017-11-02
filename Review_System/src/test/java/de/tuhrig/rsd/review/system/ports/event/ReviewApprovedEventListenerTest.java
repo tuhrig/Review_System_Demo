@@ -8,14 +8,11 @@ import de.tuhrig.rsd.review.system.domain.ReviewFixtures;
 import de.tuhrig.rsd.review.system.domain.ReviewRepository;
 import de.tuhrig.rsd.review.system.domain.ReviewStatus;
 import de.tuhrig.rsd.review.system.infrastructure.jms.JmsConfig;
-import de.tuhrig.rsd.review.system.infrastructure.jms.JmsEventPublisher;
-import de.tuhrig.rsd.review.system.infrastructure.memory.MemoryReviewRepository;
+import de.tuhrig.rsd.review.system.infrastructure.memory.ReviewStubRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -27,7 +24,7 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
         JmsConfig.class,
         ReviewApprovedEventListener.class,
         ReviewCheckingResultService.class,
-        MemoryReviewRepository.class
+        ReviewStubRepository.class
 })
 @TestPropertySource({
         "classpath:application.properties"
