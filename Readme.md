@@ -14,10 +14,12 @@ Note that this demo is highly opinionated and might not fit to your needs or pre
 
 # What to see in this demo
 
-- Usage of ActiveMQ to enable an async message-driven communication between system.
+- Usage of ActiveMQ to enable an async message-driven communication between systems.
 - Basic project setup for Spring Boot (multi-module) projects with Gradle.
 - Setup of an embedded Zuul proxy to route requests from the AngularJS UI to different backend services.
 - Usage of Docker Compose for a local development environment.
+- Configuration of Spring Data and Flyway for database access and setup.
+- Usage of Lombok annotations for readable and clutter-free Java code.
 
 # Systems
 
