@@ -1,0 +1,8 @@
+<h1>Approved Reviews</h1>
+
+<div ng-repeat="review in $ctrl.reviews">
+    <h2>{{ review.subject }}</h2>
+    <p>Rating: <code>{{ review.rating }}</code></p>
+    <p>{{ review.content }}</p>
+    <hr>
+</div>
