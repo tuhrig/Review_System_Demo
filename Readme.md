@@ -11,6 +11,7 @@ Note that this demo is highly opinionated and might not fit to your needs or pre
 - An user can submit a review about a product.
 - Each review must be checked and approved (or rejected).
 - All approved reviews can be listed.
+- Statistics about how many reviews have been submitted, approved and rejected can be seen.
 
 # What to see in this demo
 
@@ -26,7 +27,7 @@ Note that this demo is highly opinionated and might not fit to your needs or pre
 ## User Interface System (port 9002)
 
 - AngularJS based user interface
-- Allows to submit and read reviews
+- Allows to submit and read reviews and view some overall statistics
 - The backend is a Zuul proxy which forwards requests (to the review system)
 
 ## Review System (port 9001)
@@ -41,6 +42,11 @@ Note that this demo is highly opinionated and might not fit to your needs or pre
 - Listens for _NEW REVIEW_ events
 - Throws _APPROVED REVIEW_ events or _REJECTED REVIEW_ events
 
+## Statistics System (port 9003)
+
+- Listens for _NEW REVIEW_, _APPROVED REVIEW_ and _REJECTED REVIEW_ event
+- Provides simple statistics on how many reviews have been submitted, approved or rejected 
+
 # Run
 
 Perquisites:
@@ -53,6 +59,7 @@ Run it:
     docker-compose up
     
     ./gradlew review_system:bootrun
+    ./gradlew statistics_system:bootrun
     ./gradlew checking_system:bootrun
     ./gradlew user_interface_system:bootrun
     
