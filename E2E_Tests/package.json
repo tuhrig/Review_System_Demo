@@ -1,0 +1,12 @@
+{
+  "name": "review_system_demo",
+  "version": "0.0.0",
+  "author": "Thomas Uhrig",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-cli": "^1.2.0",
+    "grunt-protractor-runner": "^5.0.0",
+    "phantomjs-prebuilt": "^2.1.14",
+    "protractor": "5.1.2"
+  }
+}

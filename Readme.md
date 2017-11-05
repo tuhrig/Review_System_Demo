@@ -78,6 +78,11 @@ ActiveMQ Admin Console: http://localhost:8161/admin (Credentials: admin / admin)
     cd User_Interface_System/
     grunt check
     
+## (Protractor) E2E-Tests
+    
+    cd E2E_Tests/
+    grunt protractor
+
 # Links to my related blog posts
     
 - Using ActiveMQ virtual topics to send events between systems and handle errors (failing event consumption).     
