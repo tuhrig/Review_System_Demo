@@ -5,15 +5,15 @@ public class ReviewFixtures {
         return new Review(
                 new ReviewId("20170101-R-00001"),
                 "My Review",
-                "This is a valid review send by an user. It has an ID, a subject and some content. This review can be approved!"
+                "This is a valid review. This review can be approved!"
         );
     }
 
-    public static Review invalidReview() {
+    public static Review inappropriateReview() {
         return new Review(
                 new ReviewId("20170101-R-00001"),
                 "My Review",
-                "This is an invalid review. Its content is too short."
+                "This is an invalid review. It contains to many bad words."
         );
     }
 }

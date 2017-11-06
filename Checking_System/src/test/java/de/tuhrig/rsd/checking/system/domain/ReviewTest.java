@@ -14,16 +14,16 @@ public class ReviewTest {
     }
 
     @Test
-    public void should_RejectInvalidReview() throws Exception {
-        Review validReview = ReviewFixtures.invalidReview();
+    public void should_RejectReview_WithInappropriateContent() throws Exception {
+        Review validReview = ReviewFixtures.inappropriateReview();
         validReview.check();
         assertThat(validReview.isApproved()).isFalse();
     }
 
     @Test
     public void should_SetRejectingReason_ForInvalidReview() throws Exception {
-        Review validReview = ReviewFixtures.invalidReview();
+        Review validReview = ReviewFixtures.inappropriateReview();
         validReview.check();
-        assertThat(validReview.getRejectionReason()).isEqualTo("Content is too short");
+        assertThat(validReview.getRejectionReason()).isEqualTo("Your review contains inappropriate content");
     }
 }

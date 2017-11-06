@@ -6,11 +6,18 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Arrays;
+
 @Getter
 @Slf4j
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE) // Jackson mapper default!
 public class Review {
+
+    private static final String[] INAPPROPRIATE_CONTENT = new String[] {
+            "bad", "wrong", "shit", "fuck"
+    };
+
     private ReviewId reviewId;
     private String subject;
     private String content;
@@ -23,16 +30,17 @@ public class Review {
         this.content = content;
     }
 
+    /**
+     * This method will check the review to either approve or reject it.
+     * To do so, it will check the content for inappropriate words which
+     * might be offending for other users. If the review contains such
+     * words, it will be rejected with a dedicated message/reason.
+     */
     public void check() {
-        if(subject.length() < 5) {
-            reject("Subject is too short");
-        } else if(subject.length() > 100) {
-            reject("Subject is too long");
-        } else if(content.length() < 100) {
-            reject("Content is too short");
-        } else if(content.length() > 500) {
-            reject("Content is too long");
-            log.debug("Content is too long. [reviewId={}, length={}, allowed={}]", reviewId, content.length(), 500);
+        boolean containsInappropriateContent = Arrays.stream(INAPPROPRIATE_CONTENT)
+                                                     .anyMatch(content.toLowerCase()::contains);
+        if(containsInappropriateContent) {
+            reject("Your review contains inappropriate content");
         } else {
             approve();
         }
