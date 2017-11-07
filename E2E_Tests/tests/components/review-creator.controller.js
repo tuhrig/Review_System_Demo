@@ -1,31 +1,45 @@
 (function () {
 
-    function fillSubject(subject) {
-        
+    var component = null;
+
+    function setComponent(componentToUse) {
+        component = componentToUse;
     }
 
-    function setRating(rating) {
-
+    function setSubject(subject) {
+        var inputField = component.element(by.name('subject'));
+        inputField.sendKeys(subject);
     }
 
-    function fillContent(content) {
-
+    function setRating(index) {
+        component.all(by.tagName('option')).then(function(options){
+            options[index + 1].click();
+        });
     }
-    
+
+    function setContent(content) {
+        var inputField = component.element(by.name('content'));
+        inputField.sendKeys(content);
+    }
+
+    function setReview(review) {
+        setSubject(review.subject);
+        setRating(review.rating);
+        setContent(review.content);
+    }
+
     function submit() {
-        
+        var button = component.element(by.name('submit'));
+        button.click();
     }
-    
-    function isSubmitButtonEnabled() {
-        
-    }
-    
+
     module.exports = {
-        fillSubject: fillSubject,
+        setComponent: setComponent,
+        setSubject: setSubject,
         setRating: setRating,
-        fillContent: fillContent,
-        submit: submit,
-        isSubmitButtonEnabled: isSubmitButtonEnabled
+        setContent: setContent,
+        setReview: setReview,
+        submit: submit
     };
 
 })();
