@@ -1,8 +1,8 @@
 <h1>See all approved reviews!</h1>
 
-<div ng-repeat="review in $ctrl.reviews">
-    <h2>{{ review.subject }}</h2>
-    <p>Rating: <code>{{ review.rating }}</code></p>
-    <p>{{ review.content }}</p>
+<div name="review" ng-repeat="review in $ctrl.reviews | orderBy: reverse:true">
+    <h2 name="subject">{{ review.subject }}</h2>
+    <p>Rating: <code name="rating">{{ review.rating }}</code></p>
+    <p name="content">{{ review.content }}</p>
     <hr>
 </div>
