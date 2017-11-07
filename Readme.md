@@ -82,6 +82,10 @@ ActiveMQ Admin Console: http://localhost:8161/admin (Credentials: admin / admin)
     
     cd E2E_Tests/
     grunt protractor
+    
+**Note:**
+In order to run the E2E tests, all four systems (review, statistics, checking and UI) must be running.
+The E2E tests will then open a Chrome browser to navigate on the web application.
 
 # Links to my related blog posts
     
