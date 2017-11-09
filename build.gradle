@@ -25,6 +25,14 @@ subprojects {
 
         testCompile('org.springframework.boot:spring-boot-starter-test')
     }
+
+    // When executing ./gradlew check on the console, I want to see all test
+    // results in the log.
+    test {
+        testLogging {
+            events "passed", "skipped", "failed"
+        }
+    }
 }
 
 // We want to ensure that everybody is building this project with the same Gradle version.
