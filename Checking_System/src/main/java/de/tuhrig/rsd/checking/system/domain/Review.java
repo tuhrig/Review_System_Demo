@@ -14,6 +14,10 @@ import java.util.Arrays;
 @NoArgsConstructor(access = AccessLevel.PRIVATE) // Jackson mapper default!
 public class Review {
 
+    // A list of "bad words" which are considered an inappropriate language. Any
+    // review containing one of these words will be rejected.
+    //
+    // Note that this is just an example and probably not a complete list ;)
     private static final String[] INAPPROPRIATE_CONTENT = new String[] {
             "bad", "wrong", "shit", "fuck"
     };
