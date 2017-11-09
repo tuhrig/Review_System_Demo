@@ -1,6 +1,6 @@
-rootProject.name = 'review_system_demo'
+rootProject.name = 'Review_System_Demo'
 
 include ':Review_System'
-include ':statistics_system'
-include ':checking_system'
-include ':user_interface_system'
+include ':Statistics_System'
+include ':Checking_System'
+include ':User_Interface_System'
