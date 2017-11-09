@@ -3,6 +3,7 @@ Review System Demo
 
 _A Spring-Boot and AngularJS boilerplate project_
 
+[![Build Status](https://travis-ci.org/tuhrig/Review_System_Demo.svg?branch=master)](https://travis-ci.org/tuhrig/Review_System_Demo)
 
 # About
 
