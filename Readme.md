@@ -1,10 +1,15 @@
-Review System Demo Application
-==============================
+Review System Demo
+==================
+
+_A Spring-Boot and AngularJS boilerplate project_
+
 
 # About
 
-This is a simple demo project to show a message driven architecture of Spring Boot projects.
-Note that this demo is highly opinionated and might not fit to your needs or preferences.
+This is a boilerplate project to show a message driven architecture for Spring Boot projects.
+Note that this application is highly opinionated and might not fit to your needs or preferences.
+
+Read more: http://tuhrig.de/spring-boot-boilerplate-project-with-activemq-and-angularjs
  
 # Use cases of the demo
 
@@ -88,6 +93,8 @@ In order to run the E2E tests, all four systems (review, statistics, checking an
 The E2E tests will then open a Chrome browser to navigate on the web application.
 
 # Links to my related blog posts
+
+- A description of the boilerplate project on my blog. // http://tuhrig.de/spring-boot-boilerplate-project-with-activemq-and-angularjs    
     
 - Using ActiveMQ virtual topics to send events between systems and handle errors (failing event consumption).     
  // http://tuhrig.de/effective-error-handling-for-activemq-topics    
