@@ -30,7 +30,7 @@ public class Review {
     @JsonIgnore
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private ReviewStatus reviewStatus = ReviewStatus.INITIALIZED;
+    private ReviewStatus reviewStatus;
 
     @Column(nullable = false)
     private String subject;
@@ -60,8 +60,8 @@ public class Review {
     }
 
     public void open() {
-        if(reviewStatus != ReviewStatus.INITIALIZED) {
-            throw new IllegalStateException("Review is already open: " + reviewId);
+        if(reviewStatus != null) {
+            throw new IllegalStateException("Cannot open review which already has a state (was: '" + reviewStatus + "'): " + reviewId);
         }
         reviewId = ReviewId.createNew();
         reviewStatus = ReviewStatus.OPEN;

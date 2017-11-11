@@ -23,7 +23,7 @@ public class ReviewTest {
         Throwable throwable = catchThrowable(review::open); // open it twice!
         assertThat(throwable)
                 .isInstanceOf(IllegalStateException.class)
-                .hasMessage("Review is already open: " + review.getReviewId());
+                .hasMessage("Cannot open review which already has a state (was: 'OPEN'): " + review.getReviewId());
     }
 
     @Test
@@ -40,7 +40,7 @@ public class ReviewTest {
         Throwable throwable = catchThrowable(review::approve);
         assertThat(throwable)
                 .isInstanceOf(IllegalStateException.class)
-                .hasMessage("Cannot approve review in state 'INITIALIZED', must be: OPEN");
+                .hasMessage("Cannot approve review in state 'null', must be: OPEN");
     }
 
     @Test
@@ -57,7 +57,7 @@ public class ReviewTest {
         Throwable throwable = catchThrowable(review::reject);
         assertThat(throwable)
                 .isInstanceOf(IllegalStateException.class)
-                .hasMessage("Cannot reject review in state 'INITIALIZED', must be: OPEN");
+                .hasMessage("Cannot reject review in state 'null', must be: OPEN");
     }
 
 }

@@ -49,7 +49,7 @@ public class ReviewRepositoryAdapterTest {
     public void should_ReturnEmptyList_IfNoReviewsFound_ByStatus() {
         Review review = ReviewFixtures.anOpenFiveStarSmartphoneReview();
         reviewRepositoryAdapter.save(review);
-        List<Review> loaded = reviewRepositoryAdapter.findAllByStatus(ReviewStatus.INITIALIZED);
+        List<Review> loaded = reviewRepositoryAdapter.findAllByStatus(ReviewStatus.APPROVED);
         assertThat(loaded).hasSize(0);
     }
 }
