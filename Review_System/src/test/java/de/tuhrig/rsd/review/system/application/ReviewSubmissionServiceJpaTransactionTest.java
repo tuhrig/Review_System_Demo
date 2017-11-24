@@ -21,7 +21,7 @@ import static org.mockito.Mockito.doThrow;
         ReviewRepositoryAdapter.class,
         ReviewSubmissionService.class
 })
-public class ReviewSubmissionServiceTransactionTest {
+public class ReviewSubmissionServiceJpaTransactionTest {
 
     @MockBean
     private ReviewSubmittedEventSender reviewSubmittedEventSenderMock;

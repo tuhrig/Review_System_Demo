@@ -24,6 +24,15 @@ public class JmsConfig {
 
     @Bean
     public JmsEventPublisher eventPublisher(JmsTemplate jmsTemplate) {
+
+        // We want all JMS operations to be transactional. For example, if a repository
+        // save fails, the JMS operation should also be rolled back:
+        //
+        //      repository.save(entity); // is marked for rollback!
+        //      publisher.send(event); // should not be sent at all!
+        //
+        jmsTemplate.setSessionTransacted(true);
+
         return new JmsEventPublisher(jmsTemplate, new ActiveMQTopic(eventTopic));
     }
 
