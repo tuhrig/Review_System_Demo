@@ -1,12 +1,13 @@
 package de.tuhrig.rsd.checking.system.domain;
 
 import com.fasterxml.jackson.annotation.JsonValue;
+import de.tuhrig.rsd.common.domain.DomainEntityId;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 @Getter
 @EqualsAndHashCode
-public class ReviewId {
+public class ReviewId implements DomainEntityId {
 
     private String reviewId;
 

@@ -13,7 +13,7 @@ import java.util.Arrays;
 @Slf4j
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE) // Jackson mapper default!
-public class Review implements DomainEntity {
+public class Review implements DomainEntity<ReviewId> {
 
     // A list of "bad words" which are considered an inappropriate language. Any
     // review containing one of these words will be rejected.
@@ -60,5 +60,10 @@ public class Review implements DomainEntity {
     private void approve() {
         this.approved = true;
         log.info("Review approved. [reviewId={}]", reviewId);
+    }
+
+    @Override
+    public ReviewId getId() {
+        return reviewId;
     }
 }

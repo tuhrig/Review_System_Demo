@@ -1,6 +1,7 @@
 package de.tuhrig.rsd.statistic.system.domain;
 
 import com.fasterxml.jackson.annotation.JsonValue;
+import de.tuhrig.rsd.common.domain.DomainEntityId;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -16,7 +17,7 @@ import java.util.StringJoiner;
 @EqualsAndHashCode
 @Embeddable
 @NoArgsConstructor(access = AccessLevel.PRIVATE) // Hibernate default!
-public class StatisticId implements Serializable {
+public class StatisticId implements DomainEntityId, Serializable {
 
     private static Integer sequenceNumber = 1;
     private String statisticId;

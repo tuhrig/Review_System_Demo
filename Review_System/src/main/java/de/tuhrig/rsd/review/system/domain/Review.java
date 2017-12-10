@@ -23,7 +23,7 @@ import java.util.Date;
 @NoArgsConstructor(access = AccessLevel.PRIVATE) // Jackson mapper default!
 @EqualsAndHashCode(of = "reviewId")
 @Entity
-public class Review implements DomainEntity {
+public class Review implements DomainEntity<ReviewId> {
 
     @EmbeddedId
     private ReviewId reviewId;
@@ -83,5 +83,10 @@ public class Review implements DomainEntity {
         }
         reviewStatus = ReviewStatus.REJECTED;
         log.info("Review rejected. [reviewId={}]", reviewId);
+    }
+
+    @Override
+    public ReviewId getId() {
+        return reviewId;
     }
 }

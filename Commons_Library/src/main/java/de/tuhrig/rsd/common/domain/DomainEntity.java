@@ -6,5 +6,14 @@ package de.tuhrig.rsd.common.domain;
  * is has an identity. It changes its state based on business logic
  * and publishes domain events.
  */
-public interface DomainEntity {
+
+public interface DomainEntity<T extends DomainEntityId> {
+
+    /**
+     * Returns the unique ID of the domain entity. Two domain entities
+     * with the same ID are considered to be equal.
+     *
+     * @return The ID of the domain entity
+     */
+    T getId();
 }

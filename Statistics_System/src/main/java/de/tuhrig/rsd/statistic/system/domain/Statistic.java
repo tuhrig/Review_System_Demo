@@ -22,7 +22,7 @@ import java.util.Date;
 @NoArgsConstructor(access = AccessLevel.PRIVATE) // Jackson mapper default!
 @EqualsAndHashCode(of = "statisticId")
 @Entity
-public class Statistic implements DomainEntity {
+public class Statistic implements DomainEntity<StatisticId> {
 
     @EmbeddedId
     private StatisticId statisticId;
@@ -46,5 +46,10 @@ public class Statistic implements DomainEntity {
     public Statistic(ReviewStatus reviewStatus) {
         this.statisticId = StatisticId.createNew();
         this.reviewStatus = reviewStatus;
+    }
+
+    @Override
+    public StatisticId getId() {
+        return statisticId;
     }
 }
