@@ -1,6 +1,7 @@
 package de.tuhrig.rsd.review.system.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import de.tuhrig.rsd.common.domain.DomainEntity;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -22,7 +23,7 @@ import java.util.Date;
 @NoArgsConstructor(access = AccessLevel.PRIVATE) // Jackson mapper default!
 @EqualsAndHashCode(of = "reviewId")
 @Entity
-public class Review {
+public class Review implements DomainEntity {
 
     @EmbeddedId
     private ReviewId reviewId;

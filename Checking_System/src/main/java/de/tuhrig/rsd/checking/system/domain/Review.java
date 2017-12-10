@@ -1,5 +1,6 @@
 package de.tuhrig.rsd.checking.system.domain;
 
+import de.tuhrig.rsd.common.domain.DomainEntity;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import java.util.Arrays;
 @Slf4j
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE) // Jackson mapper default!
-public class Review {
+public class Review implements DomainEntity {
 
     // A list of "bad words" which are considered an inappropriate language. Any
     // review containing one of these words will be rejected.

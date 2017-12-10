@@ -1,4 +1,10 @@
 dependencies {
+
+    // The commons library contains concepts shared by all projects
+    // of the review system. Without the commons library, we would
+    // need to duplicate code.
+    compile project(':Commons_Library')
+
     compile('org.springframework.boot:spring-boot-starter-activemq')
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
 

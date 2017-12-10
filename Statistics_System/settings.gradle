@@ -1,1 +1,3 @@
 rootProject.name = 'Statistics_System'
+
+include ':Commons_Library'

@@ -1,6 +1,7 @@
 package de.tuhrig.rsd.statistic.system.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import de.tuhrig.rsd.common.domain.DomainEntity;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -21,7 +22,7 @@ import java.util.Date;
 @NoArgsConstructor(access = AccessLevel.PRIVATE) // Jackson mapper default!
 @EqualsAndHashCode(of = "statisticId")
 @Entity
-public class Statistic {
+public class Statistic implements DomainEntity {
 
     @EmbeddedId
     private StatisticId statisticId;

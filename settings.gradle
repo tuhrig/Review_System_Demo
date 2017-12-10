@@ -1,5 +1,6 @@
 rootProject.name = 'Review_System_Demo'
 
+include ':Commons_Library'
 include ':Review_System'
 include ':Statistics_System'
 include ':Checking_System'
