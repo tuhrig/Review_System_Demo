@@ -1,7 +1,7 @@
 package de.tuhrig.rsd.review.system.ports.event;
 
+import de.tuhrig.rsd.common.application.EventPublisher;
 import de.tuhrig.rsd.review.system.JmsUtil;
-import de.tuhrig.rsd.review.system.application.EventPublisher;
 import de.tuhrig.rsd.review.system.application.ReviewCheckingResultService;
 import de.tuhrig.rsd.review.system.domain.Review;
 import de.tuhrig.rsd.review.system.domain.ReviewFixtures;

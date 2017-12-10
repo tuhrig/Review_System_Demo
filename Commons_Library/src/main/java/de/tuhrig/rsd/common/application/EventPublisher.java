@@ -1,4 +1,6 @@
-package de.tuhrig.rsd.checking.system.application;
+package de.tuhrig.rsd.common.application;
+
+import de.tuhrig.rsd.common.domain.DomainEvent;
 
 /**
  * Service to publish domain events. Any other application
@@ -6,5 +8,5 @@ package de.tuhrig.rsd.checking.system.application;
  * Note that an event can be consumed by multiple listeners.
  */
 public interface EventPublisher {
-    void publish(Object event);
+    void publish(DomainEvent event);
 }

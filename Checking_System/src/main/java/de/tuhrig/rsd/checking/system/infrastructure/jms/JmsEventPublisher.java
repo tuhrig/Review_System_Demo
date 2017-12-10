@@ -1,6 +1,7 @@
 package de.tuhrig.rsd.checking.system.infrastructure.jms;
 
-import de.tuhrig.rsd.checking.system.application.EventPublisher;
+import de.tuhrig.rsd.common.application.EventPublisher;
+import de.tuhrig.rsd.common.domain.DomainEvent;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.core.JmsTemplate;
@@ -15,7 +16,7 @@ public class JmsEventPublisher implements EventPublisher {
     private final Destination destination;
 
     @Override
-    public void publish(Object event) {
+    public void publish(DomainEvent event) {
         jmsTemplate.convertAndSend(destination, event);
         log.trace("Sent event. [destination={}, event={}]", destination, event);
     }

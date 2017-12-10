@@ -1,6 +1,6 @@
 package de.tuhrig.rsd.review.system.ports.event;
 
-import de.tuhrig.rsd.review.system.application.EventPublisher;
+import de.tuhrig.rsd.common.application.EventPublisher;
 import de.tuhrig.rsd.review.system.domain.Review;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
