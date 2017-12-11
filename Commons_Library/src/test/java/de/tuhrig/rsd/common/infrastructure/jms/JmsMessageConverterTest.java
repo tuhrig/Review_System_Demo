@@ -27,11 +27,19 @@ public class JmsMessageConverterTest {
         jmsMessageConverter = new JmsMessageConverter();
     }
 
+    // ------------------------------------------------------------------------------------------------
+    // Misc
+    // ------------------------------------------------------------------------------------------------
+
     @Test(expected = MessageConversionException.class)
     public void should_ThrowException_IfTypeIsMissing() throws Exception {
         Message messageWithoutType = new ActiveMQTextMessage();
         jmsMessageConverter.fromMessage(messageWithoutType);
     }
+
+    // ------------------------------------------------------------------------------------------------
+    // REVIEW_SUBMITTED_EVENT
+    // ------------------------------------------------------------------------------------------------
 
     @Test
     public void should_Map_ReviewSubmittedEvent_ToTextMessageWithJson() throws JMSException {
@@ -48,6 +56,24 @@ public class JmsMessageConverterTest {
     }
 
     @Test
+    public void should_Map_TextMessageWithJson_To_ReviewSubmittedEvent() throws JMSException {
+        TextMessage message = new ActiveMQTextMessage();
+        message.setText("{\"reviewId\":\"some-review-id\",\"subject\":\"A review\",\"content\":\"This is some content\",\"rating\":5}");
+        message.setStringProperty("_type", "REVIEW_SUBMITTED_EVENT");
+
+        ReviewSubmittedEvent event = (ReviewSubmittedEvent) jmsMessageConverter.fromMessage(message);
+
+        assertThat(event.getReviewId()).isEqualTo("some-review-id");
+        assertThat(event.getSubject()).isEqualTo("A review");
+        assertThat(event.getContent()).isEqualTo("This is some content");
+        assertThat(event.getRating()).isEqualTo(5);
+    }
+
+    // ------------------------------------------------------------------------------------------------
+    // REVIEW_APPROVED_EVENT
+    // ------------------------------------------------------------------------------------------------
+
+    @Test
     public void should_Map_ReviewApprovedEvent_ToTextMessageWithJson() throws JMSException {
         ReviewApprovedEvent event = new ReviewApprovedEvent();
         event.setReviewId("some-review-id");
@@ -57,6 +83,21 @@ public class JmsMessageConverterTest {
         assertThat(message.getText()).isEqualTo("{\"reviewId\":\"some-review-id\"}");
         assertThat(message.getStringProperty("_type")).isEqualTo("REVIEW_APPROVED_EVENT");
     }
+
+    @Test
+    public void should_Map_TextMessageWithJson_To_ReviewApprovedEvent() throws JMSException {
+        TextMessage message = new ActiveMQTextMessage();
+        message.setText("{\"reviewId\":\"some-review-id\"}");
+        message.setStringProperty("_type", "REVIEW_APPROVED_EVENT");
+
+        ReviewApprovedEvent event = (ReviewApprovedEvent) jmsMessageConverter.fromMessage(message);
+
+        assertThat(event.getReviewId()).isEqualTo("some-review-id");
+    }
+
+    // ------------------------------------------------------------------------------------------------
+    // REVIEW_REJECTED_EVENT
+    // ------------------------------------------------------------------------------------------------
 
     @Test
     public void should_Map_ReviewRejectedEvent_ToTextMessageWithJson() throws JMSException {
@@ -69,6 +110,22 @@ public class JmsMessageConverterTest {
         assertThat(message.getText()).isEqualTo("{\"reviewId\":\"some-review-id\",\"reason\":\"My reason\"}");
         assertThat(message.getStringProperty("_type")).isEqualTo("REVIEW_REJECTED_EVENT");
     }
+
+    @Test
+    public void should_Map_TextMessageWithJson_To_ReviewRejectedEvent() throws JMSException {
+        TextMessage message = new ActiveMQTextMessage();
+        message.setText("{\"reviewId\":\"some-review-id\",\"reason\":\"My reason\"}");
+        message.setStringProperty("_type", "REVIEW_REJECTED_EVENT");
+
+        ReviewRejectedEvent event = (ReviewRejectedEvent) jmsMessageConverter.fromMessage(message);
+
+        assertThat(event.getReviewId()).isEqualTo("some-review-id");
+        assertThat(event.getReason()).isEqualTo("My reason");
+    }
+
+    // ------------------------------------------------------------------------------------------------
+    // Utils
+    // ------------------------------------------------------------------------------------------------
 
     private Session session() throws JMSException {
         ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("vm://localhost?broker.persistent=false");
