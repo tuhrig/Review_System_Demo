@@ -1,5 +1,6 @@
 package de.tuhrig.rsd.review.system.ports.event;
 
+import de.tuhrig.rsd.common.messaging.events.ReviewApprovedEvent;
 import de.tuhrig.rsd.review.system.application.ReviewCheckingResultService;
 import de.tuhrig.rsd.review.system.domain.ReviewId;
 import lombok.AllArgsConstructor;
@@ -17,7 +18,7 @@ public class ReviewApprovedEventListener {
             selector = "_type = 'REVIEW_APPROVED_EVENT'"
     )
     public void onEvent(ReviewApprovedEvent reviewApprovedEvent) {
-        ReviewId reviewId = reviewApprovedEvent.getReviewId();
+        ReviewId reviewId = new ReviewId(reviewApprovedEvent.getReviewId()) ;
         reviewCheckingResultService.approve(reviewId);
     }
 }

@@ -1,5 +1,7 @@
 package de.tuhrig.rsd.review.system.infrastructure.jms;
 
+import de.tuhrig.rsd.common.infrastructure.jms.JmsEventPublisher;
+import de.tuhrig.rsd.common.infrastructure.jms.JmsMessageConverter;
 import org.apache.activemq.command.ActiveMQTopic;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;

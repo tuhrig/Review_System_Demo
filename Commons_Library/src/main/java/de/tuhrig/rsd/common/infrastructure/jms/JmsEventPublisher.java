@@ -1,4 +1,4 @@
-package de.tuhrig.rsd.checking.system.infrastructure.jms;
+package de.tuhrig.rsd.common.infrastructure.jms;
 
 import de.tuhrig.rsd.common.application.EventPublisher;
 import de.tuhrig.rsd.common.domain.DomainEvent;

@@ -2,6 +2,7 @@ package de.tuhrig.rsd.review.system.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.tuhrig.rsd.common.domain.DomainEntity;
+import de.tuhrig.rsd.common.messaging.events.ReviewSubmittedEvent;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -67,6 +68,13 @@ public class Review implements DomainEntity<ReviewId> {
         reviewId = ReviewId.createNew();
         reviewStatus = ReviewStatus.OPEN;
         log.info("Review opened. [reviewId={}]", reviewId);
+
+        ReviewSubmittedEvent event = new ReviewSubmittedEvent();
+        event.setReviewId(reviewId.getReviewId());
+        event.setSubject(subject);
+        event.setContent(content);
+        event.setRating(rating.getRating());
+        raise(event);
     }
 
     public void approve() {

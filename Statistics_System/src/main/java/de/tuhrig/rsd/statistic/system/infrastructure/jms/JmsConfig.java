@@ -1,5 +1,6 @@
 package de.tuhrig.rsd.statistic.system.infrastructure.jms;
 
+import de.tuhrig.rsd.common.infrastructure.jms.JmsMessageConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.jms.JmsAutoConfiguration;

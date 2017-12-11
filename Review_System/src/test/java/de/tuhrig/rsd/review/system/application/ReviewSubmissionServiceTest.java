@@ -1,9 +1,9 @@
 package de.tuhrig.rsd.review.system.application;
 
+import de.tuhrig.rsd.common.application.EventPublisher;
 import de.tuhrig.rsd.review.system.domain.Review;
 import de.tuhrig.rsd.review.system.domain.ReviewFixtures;
 import de.tuhrig.rsd.review.system.domain.ReviewRepository;
-import de.tuhrig.rsd.review.system.ports.event.ReviewSubmittedEventSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -11,6 +11,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.mockito.Matchers.anyList;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -20,7 +21,7 @@ public class ReviewSubmissionServiceTest {
     private ReviewRepository reviewRepositoryMock;
 
     @Mock
-    private ReviewSubmittedEventSender reviewSubmittedEventSenderMock;
+    private EventPublisher eventPublisherMock;
 
     @InjectMocks
     private ReviewSubmissionService reviewSubmissionService;
@@ -43,6 +44,6 @@ public class ReviewSubmissionServiceTest {
     public void should_SendSubmissionEvent() throws Exception {
         Review review = ReviewFixtures.anInitialFiveStarSmartphoneReview();
         reviewSubmissionService.submit(review);
-        verify(reviewSubmittedEventSenderMock).reviewSubmitted(review);
+        verify(eventPublisherMock).publish(anyList());
     }
 }

@@ -1,8 +1,8 @@
 package de.tuhrig.rsd.review.system.application;
 
+import de.tuhrig.rsd.common.application.EventPublisher;
 import de.tuhrig.rsd.review.system.domain.Review;
 import de.tuhrig.rsd.review.system.domain.ReviewRepository;
-import de.tuhrig.rsd.review.system.ports.event.ReviewSubmittedEventSender;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class ReviewSubmissionService {
 
     private ReviewRepository reviewRepository;
-    private ReviewSubmittedEventSender reviewSubmittedEventSender;
+    private EventPublisher eventPublisher;
 
     // This method is transactional as we do two things at the same time:
     // saving the review and sending a new event. If the event sending fails,
@@ -27,6 +27,6 @@ public class ReviewSubmissionService {
         // back. No matter if we first save the entity or first send the message.
         // You can play around with it, using the integrations tests.
         reviewRepository.save(review);
-        reviewSubmittedEventSender.reviewSubmitted(review);
+        eventPublisher.publish(review.getOccurredEvents());
     }
 }

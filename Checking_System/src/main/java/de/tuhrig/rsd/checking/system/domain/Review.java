@@ -1,6 +1,8 @@
 package de.tuhrig.rsd.checking.system.domain;
 
 import de.tuhrig.rsd.common.domain.DomainEntity;
+import de.tuhrig.rsd.common.messaging.events.ReviewApprovedEvent;
+import de.tuhrig.rsd.common.messaging.events.ReviewRejectedEvent;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -55,11 +57,20 @@ public class Review implements DomainEntity<ReviewId> {
         this.approved = false;
         this.rejectionReason = reason;
         log.info("Review rejected. [reviewId={}, reason={}]", reviewId, reason);
+
+        ReviewRejectedEvent event = new ReviewRejectedEvent();
+        event.setReviewId(reviewId.getReviewId());
+        event.setReason(reason);
+        raise(event);
     }
 
     private void approve() {
         this.approved = true;
         log.info("Review approved. [reviewId={}]", reviewId);
+
+        ReviewApprovedEvent event = new ReviewApprovedEvent();
+        event.setReviewId(reviewId.getReviewId());
+        raise(event);
     }
 
     @Override

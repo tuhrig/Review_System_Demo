@@ -1,5 +1,6 @@
 package de.tuhrig.rsd.statistic.system.ports.event;
 
+import de.tuhrig.rsd.common.messaging.events.ReviewApprovedEvent;
 import de.tuhrig.rsd.statistic.system.application.ReviewStatisticsService;
 import de.tuhrig.rsd.statistic.system.domain.ReviewStatus;
 import lombok.AllArgsConstructor;

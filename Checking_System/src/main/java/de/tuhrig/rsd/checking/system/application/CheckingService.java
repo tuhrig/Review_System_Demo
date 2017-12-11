@@ -1,8 +1,7 @@
 package de.tuhrig.rsd.checking.system.application;
 
 import de.tuhrig.rsd.checking.system.domain.Review;
-import de.tuhrig.rsd.checking.system.ports.event.ReviewApprovedEventSender;
-import de.tuhrig.rsd.checking.system.ports.event.ReviewRejectedEventSender;
+import de.tuhrig.rsd.common.application.EventPublisher;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,15 +9,10 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class CheckingService {
 
-    private ReviewApprovedEventSender reviewApprovedEventSender;
-    private ReviewRejectedEventSender reviewRejectedEventSender;
+    private EventPublisher eventPublisher;
 
     public void checkReview(Review review) {
         review.check();
-        if(review.isApproved()) {
-            reviewApprovedEventSender.reviewApproved(review.getReviewId());
-        } else {
-            reviewRejectedEventSender.reviewRejected(review.getReviewId(), review.getRejectionReason());
-        }
+        eventPublisher.publish(review.getOccurredEvents());
     }
 }

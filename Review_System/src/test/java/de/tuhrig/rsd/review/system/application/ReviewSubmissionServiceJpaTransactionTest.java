@@ -1,10 +1,10 @@
 package de.tuhrig.rsd.review.system.application;
 
+import de.tuhrig.rsd.common.application.EventPublisher;
 import de.tuhrig.rsd.review.system.domain.Review;
 import de.tuhrig.rsd.review.system.domain.ReviewFixtures;
 import de.tuhrig.rsd.review.system.infrastructure.database.PersistenceConfig;
 import de.tuhrig.rsd.review.system.infrastructure.database.ReviewRepositoryAdapter;
-import de.tuhrig.rsd.review.system.ports.event.ReviewSubmittedEventSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +13,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.mockito.Matchers.anyList;
 import static org.mockito.Mockito.doThrow;
 
 @RunWith(SpringRunner.class)
@@ -24,7 +25,7 @@ import static org.mockito.Mockito.doThrow;
 public class ReviewSubmissionServiceJpaTransactionTest {
 
     @MockBean
-    private ReviewSubmittedEventSender reviewSubmittedEventSenderMock;
+    private EventPublisher eventPublisherMock;
 
     @Autowired
     private ReviewRepositoryAdapter reviewRepositoryAdapter;
@@ -36,7 +37,7 @@ public class ReviewSubmissionServiceJpaTransactionTest {
     public void should_NotSaveReview_IfEventSendingFails() {
 
         Review review = ReviewFixtures.anInitialFiveStarSmartphoneReview();
-        doThrow(new RuntimeException()).when(reviewSubmittedEventSenderMock).reviewSubmitted(review);
+        doThrow(new RuntimeException()).when(eventPublisherMock).publish(anyList());
 
         try {
             reviewSubmissionService.submit(review);

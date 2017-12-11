@@ -1,6 +1,7 @@
 package de.tuhrig.rsd.review.system.ports.event;
 
 import de.tuhrig.rsd.common.application.EventPublisher;
+import de.tuhrig.rsd.common.messaging.events.ReviewRejectedEvent;
 import de.tuhrig.rsd.review.system.JmsUtil;
 import de.tuhrig.rsd.review.system.application.ReviewCheckingResultService;
 import de.tuhrig.rsd.review.system.domain.Review;
@@ -47,7 +48,7 @@ public class ReviewRejectedEventListenerTest {
         reviewRepository.save(openFiveStarSmartphoneReview);
 
         ReviewRejectedEvent event = new ReviewRejectedEvent();
-        event.setReviewId(openFiveStarSmartphoneReview.getReviewId());
+        event.setReviewId(openFiveStarSmartphoneReview.getReviewId().getReviewId());
         eventPublisher.publish(event);
 
         JmsUtil jmsUtil = new JmsUtil(jmsTemplate);

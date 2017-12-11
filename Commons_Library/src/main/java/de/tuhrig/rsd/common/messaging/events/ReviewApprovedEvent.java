@@ -1,10 +1,9 @@
-package de.tuhrig.rsd.review.system.ports.event;
+package de.tuhrig.rsd.common.messaging.events;
 
 import de.tuhrig.rsd.common.domain.DomainEvent;
-import de.tuhrig.rsd.review.system.domain.ReviewId;
 import lombok.Data;
 
 @Data
 public class ReviewApprovedEvent implements DomainEvent {
-    private ReviewId reviewId;
+    private String reviewId;
 }

@@ -6,7 +6,6 @@ import de.tuhrig.rsd.review.system.domain.ReviewFixtures;
 import de.tuhrig.rsd.review.system.infrastructure.database.PersistenceConfig;
 import de.tuhrig.rsd.review.system.infrastructure.database.ReviewRepositoryAdapter;
 import de.tuhrig.rsd.review.system.infrastructure.jms.JmsConfig;
-import de.tuhrig.rsd.review.system.ports.event.ReviewSubmittedEventSender;
 import lombok.SneakyThrows;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +26,6 @@ import static org.mockito.Mockito.doAnswer;
 @SpringBootTest(classes = {
         JmsConfig.class,
         PersistenceConfig.class,
-        ReviewSubmittedEventSender.class,
         ReviewSubmissionService.class,
         ReviewSubmissionServiceJmsTransactionTest.MyTestListener.class
 })
