@@ -2,3 +2,11 @@ dependencies {
 
     compile('org.springframework.boot:spring-boot-starter-activemq')
 }
+
+// The commons library is just a lib - not a real Spring Boot project on its own.
+// It cannot be started, it just serves as a dependency for the other projects which
+// reuse some of its code. Therefor we remove the "bootRun" task which would try to
+// find a main class (which doesn't exist) and run the project. By doing this, we are
+// able to run "./gradlew bootRun" from the root project in order to start all project
+// at a time. See the Readme.de for more information on this.
+tasks.remove(bootRun)
