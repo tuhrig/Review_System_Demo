@@ -2,7 +2,6 @@ package de.tuhrig.rsd.review.system.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.tuhrig.rsd.common.domain.DomainEntity;
-import de.tuhrig.rsd.common.messaging.events.ReviewSubmittedEvent;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

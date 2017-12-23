@@ -1,5 +1,6 @@
 package de.tuhrig.rsd.statistic.system.domain;
 
+import de.tuhrig.rsd.statistic.system.domain.statistic.StatisticId;
 import org.junit.Test;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;

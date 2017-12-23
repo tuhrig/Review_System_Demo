@@ -1,8 +1,8 @@
 package de.tuhrig.rsd.statistic.system.ports.event;
 
-import de.tuhrig.rsd.common.messaging.events.ReviewRejectedEvent;
 import de.tuhrig.rsd.statistic.system.application.ReviewStatisticsService;
-import de.tuhrig.rsd.statistic.system.domain.ReviewStatus;
+import de.tuhrig.rsd.statistic.system.domain.review.ReviewRejectedEvent;
+import de.tuhrig.rsd.statistic.system.domain.review.ReviewStatus;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.annotation.JmsListener;

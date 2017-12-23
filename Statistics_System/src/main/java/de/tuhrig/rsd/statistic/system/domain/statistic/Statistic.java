@@ -1,7 +1,8 @@
-package de.tuhrig.rsd.statistic.system.domain;
+package de.tuhrig.rsd.statistic.system.domain.statistic;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.tuhrig.rsd.common.domain.DomainEntity;
+import de.tuhrig.rsd.statistic.system.domain.review.ReviewStatus;
 import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;

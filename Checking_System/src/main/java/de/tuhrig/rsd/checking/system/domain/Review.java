@@ -1,8 +1,6 @@
 package de.tuhrig.rsd.checking.system.domain;
 
 import de.tuhrig.rsd.common.domain.DomainEntity;
-import de.tuhrig.rsd.common.messaging.events.ReviewApprovedEvent;
-import de.tuhrig.rsd.common.messaging.events.ReviewRejectedEvent;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

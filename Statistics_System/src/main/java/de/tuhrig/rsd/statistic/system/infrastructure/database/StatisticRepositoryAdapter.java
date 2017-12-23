@@ -1,8 +1,8 @@
 package de.tuhrig.rsd.statistic.system.infrastructure.database;
 
-import de.tuhrig.rsd.statistic.system.domain.ReviewStatus;
-import de.tuhrig.rsd.statistic.system.domain.Statistic;
-import de.tuhrig.rsd.statistic.system.domain.StatisticRepository;
+import de.tuhrig.rsd.statistic.system.domain.review.ReviewStatus;
+import de.tuhrig.rsd.statistic.system.domain.statistic.Statistic;
+import de.tuhrig.rsd.statistic.system.domain.statistic.StatisticRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

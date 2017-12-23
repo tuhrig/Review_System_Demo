@@ -3,7 +3,7 @@ package de.tuhrig.rsd.checking.system.ports.event;
 import de.tuhrig.rsd.checking.system.application.CheckingService;
 import de.tuhrig.rsd.checking.system.domain.Review;
 import de.tuhrig.rsd.checking.system.domain.ReviewId;
-import de.tuhrig.rsd.common.messaging.events.ReviewSubmittedEvent;
+import de.tuhrig.rsd.checking.system.domain.ReviewSubmittedEvent;
 import lombok.AllArgsConstructor;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;

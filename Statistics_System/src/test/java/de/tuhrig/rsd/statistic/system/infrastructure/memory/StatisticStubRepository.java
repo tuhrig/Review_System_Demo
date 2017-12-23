@@ -1,8 +1,8 @@
 package de.tuhrig.rsd.statistic.system.infrastructure.memory;
 
-import de.tuhrig.rsd.statistic.system.domain.ReviewStatus;
-import de.tuhrig.rsd.statistic.system.domain.Statistic;
-import de.tuhrig.rsd.statistic.system.domain.StatisticRepository;
+import de.tuhrig.rsd.statistic.system.domain.review.ReviewStatus;
+import de.tuhrig.rsd.statistic.system.domain.statistic.Statistic;
+import de.tuhrig.rsd.statistic.system.domain.statistic.StatisticRepository;
 
 import java.util.HashSet;
 import java.util.Set;

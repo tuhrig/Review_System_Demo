@@ -1,8 +1,8 @@
 package de.tuhrig.rsd.statistic.system.ports.web;
 
-import de.tuhrig.rsd.statistic.system.domain.Statistic;
+import de.tuhrig.rsd.statistic.system.domain.statistic.Statistic;
 import de.tuhrig.rsd.statistic.system.domain.StatisticFixtures;
-import de.tuhrig.rsd.statistic.system.domain.StatisticRepository;
+import de.tuhrig.rsd.statistic.system.domain.statistic.StatisticRepository;
 import de.tuhrig.rsd.statistic.system.infrastructure.memory.StatisticStubRepository;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.hasSize;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;

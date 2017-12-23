@@ -1,6 +1,5 @@
 package de.tuhrig.rsd.statistic.system.infrastructure.jms;
 
-import de.tuhrig.rsd.common.infrastructure.jms.JmsMessageConverter;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.RedeliveryPolicy;
 import org.springframework.beans.factory.annotation.Value;

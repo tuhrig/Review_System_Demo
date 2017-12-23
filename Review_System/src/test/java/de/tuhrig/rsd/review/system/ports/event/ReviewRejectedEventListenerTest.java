@@ -1,11 +1,11 @@
 package de.tuhrig.rsd.review.system.ports.event;
 
 import de.tuhrig.rsd.common.application.EventPublisher;
-import de.tuhrig.rsd.common.messaging.events.ReviewRejectedEvent;
 import de.tuhrig.rsd.review.system.JmsUtil;
 import de.tuhrig.rsd.review.system.application.ReviewCheckingResultService;
 import de.tuhrig.rsd.review.system.domain.Review;
 import de.tuhrig.rsd.review.system.domain.ReviewFixtures;
+import de.tuhrig.rsd.review.system.domain.ReviewRejectedEvent;
 import de.tuhrig.rsd.review.system.domain.ReviewRepository;
 import de.tuhrig.rsd.review.system.domain.ReviewStatus;
 import de.tuhrig.rsd.review.system.infrastructure.jms.JmsConfig;

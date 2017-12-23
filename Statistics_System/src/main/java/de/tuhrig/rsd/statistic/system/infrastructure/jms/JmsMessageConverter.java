@@ -1,8 +1,8 @@
-package de.tuhrig.rsd.common.infrastructure.jms;
+package de.tuhrig.rsd.statistic.system.infrastructure.jms;
 
-import de.tuhrig.rsd.common.messaging.events.ReviewApprovedEvent;
-import de.tuhrig.rsd.common.messaging.events.ReviewRejectedEvent;
-import de.tuhrig.rsd.common.messaging.events.ReviewSubmittedEvent;
+import de.tuhrig.rsd.statistic.system.domain.review.ReviewApprovedEvent;
+import de.tuhrig.rsd.statistic.system.domain.review.ReviewRejectedEvent;
+import de.tuhrig.rsd.statistic.system.domain.review.ReviewSubmittedEvent;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConversionException;
 import org.springframework.jms.support.converter.MessageConverter;

@@ -1,7 +1,7 @@
 package de.tuhrig.rsd.statistic.system.ports.web;
 
-import de.tuhrig.rsd.statistic.system.domain.ReviewStatus;
-import de.tuhrig.rsd.statistic.system.domain.StatisticRepository;
+import de.tuhrig.rsd.statistic.system.domain.review.ReviewStatus;
+import de.tuhrig.rsd.statistic.system.domain.statistic.StatisticRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

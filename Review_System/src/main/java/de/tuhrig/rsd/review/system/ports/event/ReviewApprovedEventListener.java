@@ -1,7 +1,7 @@
 package de.tuhrig.rsd.review.system.ports.event;
 
-import de.tuhrig.rsd.common.messaging.events.ReviewApprovedEvent;
 import de.tuhrig.rsd.review.system.application.ReviewCheckingResultService;
+import de.tuhrig.rsd.review.system.domain.ReviewApprovedEvent;
 import de.tuhrig.rsd.review.system.domain.ReviewId;
 import lombok.AllArgsConstructor;
 import org.springframework.jms.annotation.JmsListener;

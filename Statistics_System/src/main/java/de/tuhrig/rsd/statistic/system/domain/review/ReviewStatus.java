@@ -1,4 +1,4 @@
-package de.tuhrig.rsd.statistic.system.domain;
+package de.tuhrig.rsd.statistic.system.domain.review;
 
 public enum ReviewStatus {
 

@@ -1,8 +1,8 @@
-package de.tuhrig.rsd.common.infrastructure.jms;
+package de.tuhrig.rsd.statistic.system.infrastructure.jms;
 
-import de.tuhrig.rsd.common.messaging.events.ReviewApprovedEvent;
-import de.tuhrig.rsd.common.messaging.events.ReviewRejectedEvent;
-import de.tuhrig.rsd.common.messaging.events.ReviewSubmittedEvent;
+import de.tuhrig.rsd.statistic.system.domain.review.ReviewApprovedEvent;
+import de.tuhrig.rsd.statistic.system.domain.review.ReviewRejectedEvent;
+import de.tuhrig.rsd.statistic.system.domain.review.ReviewSubmittedEvent;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQTextMessage;
 import org.junit.Before;
@@ -45,13 +45,10 @@ public class JmsMessageConverterTest {
     public void should_Map_ReviewSubmittedEvent_ToTextMessageWithJson() throws JMSException {
         ReviewSubmittedEvent event = new ReviewSubmittedEvent();
         event.setReviewId("some-review-id");
-        event.setRating(5);
-        event.setSubject("A review");
-        event.setContent("This is some content");
 
         TextMessage message = (TextMessage) jmsMessageConverter.toMessage(event, session());
 
-        assertThat(message.getText()).isEqualTo("{\"reviewId\":\"some-review-id\",\"subject\":\"A review\",\"content\":\"This is some content\",\"rating\":5}");
+        assertThat(message.getText()).isEqualTo("{\"reviewId\":\"some-review-id\"}");
         assertThat(message.getStringProperty("_type")).isEqualTo("REVIEW_SUBMITTED_EVENT");
     }
 
@@ -64,9 +61,6 @@ public class JmsMessageConverterTest {
         ReviewSubmittedEvent event = (ReviewSubmittedEvent) jmsMessageConverter.fromMessage(message);
 
         assertThat(event.getReviewId()).isEqualTo("some-review-id");
-        assertThat(event.getSubject()).isEqualTo("A review");
-        assertThat(event.getContent()).isEqualTo("This is some content");
-        assertThat(event.getRating()).isEqualTo(5);
     }
 
     // ------------------------------------------------------------------------------------------------
@@ -103,11 +97,10 @@ public class JmsMessageConverterTest {
     public void should_Map_ReviewRejectedEvent_ToTextMessageWithJson() throws JMSException {
         ReviewRejectedEvent event = new ReviewRejectedEvent();
         event.setReviewId("some-review-id");
-        event.setReason("My reason");
 
         TextMessage message = (TextMessage) jmsMessageConverter.toMessage(event, session());
 
-        assertThat(message.getText()).isEqualTo("{\"reviewId\":\"some-review-id\",\"reason\":\"My reason\"}");
+        assertThat(message.getText()).isEqualTo("{\"reviewId\":\"some-review-id\"}");
         assertThat(message.getStringProperty("_type")).isEqualTo("REVIEW_REJECTED_EVENT");
     }
 
@@ -120,7 +113,6 @@ public class JmsMessageConverterTest {
         ReviewRejectedEvent event = (ReviewRejectedEvent) jmsMessageConverter.fromMessage(message);
 
         assertThat(event.getReviewId()).isEqualTo("some-review-id");
-        assertThat(event.getReason()).isEqualTo("My reason");
     }
 
     // ------------------------------------------------------------------------------------------------

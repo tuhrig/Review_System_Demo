@@ -1,4 +1,4 @@
-package de.tuhrig.rsd.statistic.system.domain;
+package de.tuhrig.rsd.statistic.system.domain.statistic;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import de.tuhrig.rsd.common.domain.DomainEntityId;

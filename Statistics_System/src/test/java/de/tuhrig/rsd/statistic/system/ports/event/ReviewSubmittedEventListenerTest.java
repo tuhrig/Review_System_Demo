@@ -1,10 +1,10 @@
 package de.tuhrig.rsd.statistic.system.ports.event;
 
-import de.tuhrig.rsd.common.messaging.events.ReviewSubmittedEvent;
 import de.tuhrig.rsd.statistic.system.JmsUtil;
 import de.tuhrig.rsd.statistic.system.application.ReviewStatisticsService;
-import de.tuhrig.rsd.statistic.system.domain.ReviewStatus;
-import de.tuhrig.rsd.statistic.system.domain.StatisticRepository;
+import de.tuhrig.rsd.statistic.system.domain.review.ReviewStatus;
+import de.tuhrig.rsd.statistic.system.domain.review.ReviewSubmittedEvent;
+import de.tuhrig.rsd.statistic.system.domain.statistic.StatisticRepository;
 import de.tuhrig.rsd.statistic.system.infrastructure.jms.JmsConfig;
 import de.tuhrig.rsd.statistic.system.infrastructure.memory.StatisticStubRepository;
 import org.apache.activemq.command.ActiveMQQueue;

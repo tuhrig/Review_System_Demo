@@ -1,7 +1,7 @@
 package de.tuhrig.rsd.statistic.system.infrastructure.memory;
 
-import de.tuhrig.rsd.statistic.system.domain.ReviewStatus;
-import de.tuhrig.rsd.statistic.system.domain.Statistic;
+import de.tuhrig.rsd.statistic.system.domain.review.ReviewStatus;
+import de.tuhrig.rsd.statistic.system.domain.statistic.Statistic;
 import de.tuhrig.rsd.statistic.system.domain.StatisticFixtures;
 import org.junit.Test;
 

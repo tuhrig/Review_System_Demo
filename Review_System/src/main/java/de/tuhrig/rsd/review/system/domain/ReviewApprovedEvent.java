@@ -1,4 +1,4 @@
-package de.tuhrig.rsd.common.messaging.events;
+package de.tuhrig.rsd.review.system.domain;
 
 import de.tuhrig.rsd.common.domain.DomainEvent;
 import lombok.Data;
