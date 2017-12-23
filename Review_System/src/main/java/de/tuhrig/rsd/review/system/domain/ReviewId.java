@@ -3,27 +3,13 @@ package de.tuhrig.rsd.review.system.domain;
 import de.tuhrig.rsd.common.domain.DomainEntityId;
 import lombok.Value;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.StringJoiner;
-
 @Value
 public class ReviewId implements DomainEntityId {
 
-    private static Integer sequenceNumber = 1;
     private String reviewId;
 
     public static ReviewId createNew() {
-
-        StringJoiner joiner = new StringJoiner("-", "", "");
-
-        joiner.add(LocalDate.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")));
-        joiner.add("R");
-        joiner.add(("00000" + sequenceNumber).substring(String.valueOf(sequenceNumber).length()));
-
-        sequenceNumber++;
-
-        return new ReviewId(joiner.toString());
+        return ReviewIdGenerator.createNew();
     }
 
     public ReviewId(String reviewId) {
