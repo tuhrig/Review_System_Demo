@@ -7,7 +7,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -15,8 +14,7 @@ import java.util.StringJoiner;
 
 @Getter
 @EqualsAndHashCode
-@Embeddable
-@NoArgsConstructor(access = AccessLevel.PRIVATE) // Hibernate default!
+@NoArgsConstructor(access = AccessLevel.PRIVATE) // For Jackson!
 public class ReviewId implements DomainEntityId, Serializable {
 
     private static Integer sequenceNumber = 1;

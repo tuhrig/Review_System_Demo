@@ -6,15 +6,10 @@ import lombok.AccessLevel;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Embeddable;
-
-@Embeddable
 @EqualsAndHashCode
-@NoArgsConstructor(access = AccessLevel.PRIVATE) // Hibernate default!
+@NoArgsConstructor(access = AccessLevel.PRIVATE) // For Jackson!
 public class Rating implements ValueObject {
 
-    @Column(nullable = false)
     private int rating;
 
     public Rating(int rating) {

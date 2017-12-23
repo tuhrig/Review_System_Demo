@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Adapter that protects the domain layer from Spring Data specific implementations.
@@ -17,19 +18,26 @@ import java.util.List;
 public class ReviewRepositoryAdapter implements ReviewRepository {
 
     private final ReviewSpringDataRepository springDataRepository;
+    private final ReviewEntityMapper reviewEntityMapper;
 
     @Override
     public void save(Review review) {
-        springDataRepository.save(review);
+        ReviewEntity reviewEntity = reviewEntityMapper.fromDomain(review);
+        springDataRepository.save(reviewEntity);
     }
 
     @Override
     public List<Review> findAllByStatus(ReviewStatus reviewStatus) {
-        return springDataRepository.findAllByReviewStatus(reviewStatus);
+        List<ReviewEntity> reviewEntities = springDataRepository.findAllByReviewStatus(reviewStatus);
+        return reviewEntities
+                .stream()
+                .map(reviewEntityMapper::toDomain)
+                .collect(Collectors.toList());
     }
 
     @Override
     public Review find(ReviewId reviewId) {
-        return springDataRepository.findOne(reviewId);
+        ReviewEntity reviewEntity =  springDataRepository.findOne(reviewId.getReviewId());
+        return reviewEntityMapper.toDomain(reviewEntity);
     }
 }

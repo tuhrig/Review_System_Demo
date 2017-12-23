@@ -4,6 +4,7 @@ import de.tuhrig.rsd.common.application.EventPublisher;
 import de.tuhrig.rsd.review.system.domain.Review;
 import de.tuhrig.rsd.review.system.domain.ReviewFixtures;
 import de.tuhrig.rsd.review.system.infrastructure.database.PersistenceConfig;
+import de.tuhrig.rsd.review.system.infrastructure.database.ReviewEntityMapper;
 import de.tuhrig.rsd.review.system.infrastructure.database.ReviewRepositoryAdapter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +21,8 @@ import static org.mockito.Mockito.doThrow;
 @SpringBootTest(classes = {
         PersistenceConfig.class,
         ReviewRepositoryAdapter.class,
-        ReviewSubmissionService.class
+        ReviewSubmissionService.class,
+        ReviewEntityMapper.class
 })
 public class ReviewSubmissionServiceJpaTransactionTest {
 

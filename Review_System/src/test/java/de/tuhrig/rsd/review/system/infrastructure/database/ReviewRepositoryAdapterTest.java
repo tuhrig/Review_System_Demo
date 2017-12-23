@@ -19,6 +19,7 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 @SpringBootTest(classes = {
         PersistenceConfig.class,
         ReviewRepositoryAdapter.class,
+        ReviewEntityMapper.class
 })
 @TestPropertySource({
         "classpath:application.properties"
