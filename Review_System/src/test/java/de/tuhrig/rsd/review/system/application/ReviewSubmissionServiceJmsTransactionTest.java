@@ -1,8 +1,7 @@
 package de.tuhrig.rsd.review.system.application;
 
 import de.tuhrig.rsd.review.system.JmsUtil;
-import de.tuhrig.rsd.review.system.domain.Review;
-import de.tuhrig.rsd.review.system.domain.ReviewFixtures;
+import de.tuhrig.rsd.review.system.domain.CreateReviewCommand;
 import de.tuhrig.rsd.review.system.infrastructure.database.PersistenceConfig;
 import de.tuhrig.rsd.review.system.infrastructure.database.ReviewRepositoryAdapter;
 import de.tuhrig.rsd.review.system.infrastructure.jms.JmsConfig;
@@ -20,6 +19,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.doAnswer;
 
 @RunWith(SpringRunner.class)
@@ -51,7 +51,10 @@ public class ReviewSubmissionServiceJmsTransactionTest {
     @SneakyThrows
     public void should_NotSendEvent_IfReviewSavingFails() {
 
-        Review review = ReviewFixtures.anInitialFiveStarSmartphoneReview();
+        CreateReviewCommand createReviewCommand = new CreateReviewCommand();
+        createReviewCommand.setSubject("My review");
+        createReviewCommand.setContent("Some content");
+        createReviewCommand.setRating(1);
 
         // We simulate a failing JPA transaction. Note that we don't throw an exception,
         // as the sending of the JMS message happens after the repository save. So the
@@ -61,9 +64,9 @@ public class ReviewSubmissionServiceJmsTransactionTest {
         doAnswer(invocation -> {
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             return null;
-        }).when(reviewRepositoryAdapter).save(review);
+        }).when(reviewRepositoryAdapter).save(any());
 
-        reviewSubmissionService.submit(review);
+        reviewSubmissionService.createReview(createReviewCommand);
 
         JmsUtil jmsUtil = new JmsUtil(jmsTemplate);
         jmsUtil.waitForAll("Consumer.review_system.VirtualTopic.Events");

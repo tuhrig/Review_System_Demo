@@ -1,8 +1,7 @@
 package de.tuhrig.rsd.review.system.ports.web;
 
 import de.tuhrig.rsd.review.system.application.ReviewSubmissionService;
-import de.tuhrig.rsd.review.system.domain.Rating;
-import de.tuhrig.rsd.review.system.domain.Review;
+import de.tuhrig.rsd.review.system.domain.CreateReviewCommand;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -59,12 +58,12 @@ public class ReviewSubmissionControllerTest {
                                 .content("{ \"subject\": \"Test Review\", \"content\": \"Some review content.\", \"rating\": 5 }")
                 );
 
-        ArgumentCaptor<Review> captor = ArgumentCaptor.forClass(Review.class);
-        Mockito.verify(reviewSubmissionServiceMock).submit(captor.capture());
-        Review review = captor.getValue();
+        ArgumentCaptor<CreateReviewCommand> captor = ArgumentCaptor.forClass(CreateReviewCommand.class);
+        Mockito.verify(reviewSubmissionServiceMock).createReview(captor.capture());
+        CreateReviewCommand createReviewCommand = captor.getValue();
 
-        assertThat(review.getSubject()).isEqualTo("Test Review");
-        assertThat(review.getContent()).isEqualTo("Some review content.");
-        assertThat(review.getRating()).isEqualTo(new Rating(5));
+        assertThat(createReviewCommand.getSubject()).isEqualTo("Test Review");
+        assertThat(createReviewCommand.getContent()).isEqualTo("Some review content.");
+        assertThat(createReviewCommand.getRating()).isEqualTo(5);
     }
 }

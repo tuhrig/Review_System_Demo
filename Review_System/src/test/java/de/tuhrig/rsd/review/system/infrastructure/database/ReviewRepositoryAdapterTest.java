@@ -32,7 +32,7 @@ public class ReviewRepositoryAdapterTest {
 
     @Test
     public void should_SaveReview() {
-        Review review = ReviewFixtures.anOpenFiveStarSmartphoneReview();
+        Review review = ReviewFixtures.anInitialFiveStarSmartphoneReview();
         reviewRepositoryAdapter.save(review);
         Review loaded = reviewRepositoryAdapter.find(review.getReviewId());
         assertThat(loaded).isEqualTo(loaded);
@@ -40,7 +40,7 @@ public class ReviewRepositoryAdapterTest {
 
     @Test
     public void should_FindReviews_ByStatus() {
-        Review review = ReviewFixtures.anOpenFiveStarSmartphoneReview();
+        Review review = ReviewFixtures.anInitialFiveStarSmartphoneReview();
         reviewRepositoryAdapter.save(review);
         List<Review> loaded = reviewRepositoryAdapter.findAllByStatus(ReviewStatus.OPEN);
         assertThat(loaded).hasSize(1);
@@ -48,7 +48,7 @@ public class ReviewRepositoryAdapterTest {
 
     @Test
     public void should_ReturnEmptyList_IfNoReviewsFound_ByStatus() {
-        Review review = ReviewFixtures.anOpenFiveStarSmartphoneReview();
+        Review review = ReviewFixtures.anInitialFiveStarSmartphoneReview();
         reviewRepositoryAdapter.save(review);
         List<Review> loaded = reviewRepositoryAdapter.findAllByStatus(ReviewStatus.APPROVED);
         assertThat(loaded).hasSize(0);

@@ -44,7 +44,7 @@ public class ReviewApprovedEventListenerTest {
     @Test
     public void should_ApproveReview() {
 
-        Review openFiveStarSmartphoneReview = ReviewFixtures.anOpenFiveStarSmartphoneReview();
+        Review openFiveStarSmartphoneReview = ReviewFixtures.anInitialFiveStarSmartphoneReview();
         reviewRepository.save(openFiveStarSmartphoneReview);
 
         ReviewApprovedEvent event = new ReviewApprovedEvent();

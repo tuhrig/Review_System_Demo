@@ -47,4 +47,9 @@ public class StatisticId implements DomainEntityId, Serializable {
     public String toString() {
         return statisticId;
     }
+
+    @Override
+    public String asStringValue() {
+        return statisticId;
+    }
 }

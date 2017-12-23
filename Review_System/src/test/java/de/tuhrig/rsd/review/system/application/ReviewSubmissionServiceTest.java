@@ -1,8 +1,7 @@
 package de.tuhrig.rsd.review.system.application;
 
 import de.tuhrig.rsd.common.application.EventPublisher;
-import de.tuhrig.rsd.review.system.domain.Review;
-import de.tuhrig.rsd.review.system.domain.ReviewFixtures;
+import de.tuhrig.rsd.review.system.domain.CreateReviewCommand;
 import de.tuhrig.rsd.review.system.domain.ReviewRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,7 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import static org.assertj.core.api.Java6Assertions.assertThat;
+import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyList;
 import static org.mockito.Mockito.verify;
 
@@ -27,23 +26,24 @@ public class ReviewSubmissionServiceTest {
     private ReviewSubmissionService reviewSubmissionService;
 
     @Test
-    public void should_OpenReview() throws Exception {
-        Review review = ReviewFixtures.anInitialFiveStarSmartphoneReview();
-        reviewSubmissionService.submit(review);
-        assertThat(review.getReviewId()).isNotNull();
-    }
-
-    @Test
     public void should_SaveReview() throws Exception {
-        Review review = ReviewFixtures.anInitialFiveStarSmartphoneReview();
-        reviewSubmissionService.submit(review);
-        verify(reviewRepositoryMock).save(review);
+        CreateReviewCommand createReviewCommand = createReviewCommand();
+        reviewSubmissionService.createReview(createReviewCommand);
+        verify(reviewRepositoryMock).save(any());
     }
 
     @Test
     public void should_SendSubmissionEvent() throws Exception {
-        Review review = ReviewFixtures.anInitialFiveStarSmartphoneReview();
-        reviewSubmissionService.submit(review);
+        CreateReviewCommand createReviewCommand = createReviewCommand();
+        reviewSubmissionService.createReview(createReviewCommand);
         verify(eventPublisherMock).publish(anyList());
+    }
+
+    private CreateReviewCommand createReviewCommand() {
+        CreateReviewCommand createReviewCommand = new CreateReviewCommand();
+        createReviewCommand.setSubject("My review");
+        createReviewCommand.setContent("Some content");
+        createReviewCommand.setRating(1);
+        return createReviewCommand;
     }
 }

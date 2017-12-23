@@ -43,7 +43,7 @@ public class ReviewListControllerTest {
     public void should_ReturnApprovedReviews() throws Exception {
 
         Review approvedReview = ReviewFixtures.anApprovedFiveStarSmartphoneReview();
-        Review openedReview = ReviewFixtures.anOpenFiveStarSmartphoneReview();
+        Review openedReview = ReviewFixtures.anInitialFiveStarSmartphoneReview();
 
         reviewRepository.save(approvedReview);
         reviewRepository.save(openedReview);

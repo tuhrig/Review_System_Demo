@@ -1,6 +1,7 @@
 package de.tuhrig.rsd.review.system.application;
 
 import de.tuhrig.rsd.common.application.EventPublisher;
+import de.tuhrig.rsd.review.system.domain.CreateReviewCommand;
 import de.tuhrig.rsd.review.system.domain.Review;
 import de.tuhrig.rsd.review.system.domain.ReviewRepository;
 import lombok.AllArgsConstructor;
@@ -19,8 +20,9 @@ public class ReviewSubmissionService {
     // we also want to rollback the saved review. If the saving fails, we also
     // want to rollback the sending of the message.
     @Transactional
-    public void submit(Review review) {
-        review.open();
+    public void createReview(CreateReviewCommand createReviewCommand) {
+
+        Review review = Review.createReview(createReviewCommand);
 
         // Note: The order of the following two actions is not important in the
         // sense of transactions. If one of it fails, the other will be rolled

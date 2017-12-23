@@ -1,13 +1,9 @@
 package de.tuhrig.rsd.review.system.domain;
 
-import com.fasterxml.jackson.annotation.JsonValue;
 import de.tuhrig.rsd.common.domain.ValueObject;
-import lombok.AccessLevel;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.Value;
 
-@EqualsAndHashCode
-@NoArgsConstructor(access = AccessLevel.PRIVATE) // For Jackson!
+@Value
 public class Rating implements ValueObject {
 
     private int rating;
@@ -17,11 +13,6 @@ public class Rating implements ValueObject {
             throw new IllegalArgumentException("Rating must be between 0 and 5, but was: " + rating);
         }
         this.rating = rating;
-    }
-
-    @JsonValue
-    public int getRating() {
-        return rating;
     }
 
     @Override

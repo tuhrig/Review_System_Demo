@@ -23,4 +23,9 @@ public class ReviewId implements DomainEntityId {
     public String toString() {
         return reviewId;
     }
+
+    @Override
+    public String asStringValue() {
+        return reviewId;
+    }
 }

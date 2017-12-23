@@ -11,7 +11,7 @@ public class ReviewStubRepositoryTest {
     @Test
     public void should_SaveReview() throws Exception {
         ReviewStubRepository memoryReviewRepository = new ReviewStubRepository();
-        Review review = ReviewFixtures.anOpenFiveStarSmartphoneReview();
+        Review review = ReviewFixtures.anInitialFiveStarSmartphoneReview();
         memoryReviewRepository.save(review);
         Review loaded = memoryReviewRepository.find(review.getReviewId());
 

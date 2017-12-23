@@ -1,7 +1,7 @@
 package de.tuhrig.rsd.review.system.ports.web;
 
 import de.tuhrig.rsd.review.system.application.ReviewSubmissionService;
-import de.tuhrig.rsd.review.system.domain.Review;
+import de.tuhrig.rsd.review.system.domain.CreateReviewCommand;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,8 +18,14 @@ public class ReviewSubmissionController {
     private ReviewSubmissionService reviewSubmissionService;
 
     @RequestMapping(method = RequestMethod.POST)
-    public void submit(@RequestBody Review review) {
-        reviewSubmissionService.submit(review);
-        log.trace("POST to /reviews. [review={}]", review);
+    public void submit(@RequestBody ReviewResource reviewResource) {
+
+        CreateReviewCommand createReviewCommand = new CreateReviewCommand();
+        createReviewCommand.setSubject(reviewResource.getSubject());
+        createReviewCommand.setContent(reviewResource.getContent());
+        createReviewCommand.setRating(reviewResource.getRating());
+
+        reviewSubmissionService.createReview(createReviewCommand);
+        log.trace("POST to /reviews. [review={}]", reviewResource);
     }
 }

@@ -44,7 +44,7 @@ public class ReviewRejectedEventListenerTest {
     @Test
     public void should_RejectReview() {
 
-        Review openFiveStarSmartphoneReview = ReviewFixtures.anOpenFiveStarSmartphoneReview();
+        Review openFiveStarSmartphoneReview = ReviewFixtures.anInitialFiveStarSmartphoneReview();
         reviewRepository.save(openFiveStarSmartphoneReview);
 
         ReviewRejectedEvent event = new ReviewRejectedEvent();

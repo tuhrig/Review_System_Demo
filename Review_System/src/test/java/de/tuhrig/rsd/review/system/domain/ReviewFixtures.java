@@ -10,15 +10,8 @@ public class ReviewFixtures {
         return new Review(subject, content, new Rating(5));
     }
 
-    public static Review anOpenFiveStarSmartphoneReview() {
-        Review review = anInitialFiveStarSmartphoneReview();
-        review.open();
-        return review;
-    }
-
     public static Review anApprovedFiveStarSmartphoneReview() {
         Review review = anInitialFiveStarSmartphoneReview();
-        review.open();
         review.approve();
         return review;
     }

@@ -6,4 +6,5 @@ package de.tuhrig.rsd.common.domain;
  * as being equal. This interface marks such a domain identifier.
  */
 public interface DomainEntityId {
+    String asStringValue();
 }
