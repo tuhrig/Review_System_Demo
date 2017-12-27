@@ -108,4 +108,48 @@ Annotations:
 - `@Slf4j` to log when executing business functionality
 - `@EqualsAndHashCode(of = "myEntityId")` to enforce equality based on the entity ID
 
+Rules:
+- The _only_ place to implement business logic
+- Should be free of any framework dependency
+- No JPA or Jackson annotations
+
 Example: `Review.java`
+
+## Domain Events
+
+A message send to the world which informs about some event that has happened in the past.
+
+Annotations:
+- `@Data` as the events are simple containers to exchange information
+
+Rules:
+- No logic, just simple POJOs to hold data
+- Try to use only simple types (e.g. String, int, boolean) to guarantee easy serialisation
+
+Example: `ReviewSubmittedEvent.java`
+
+## REST Resources
+
+Annotations:
+- `@Data` for simple containers to exchange information
+
+Rules:
+- No logic
+- Use simple types (e.g. String, int, boolean) to guarantee easy serialisation
+- Only use in REST layer
+
+Example: `ReviewResource.java`
+
+## JPA Entities
+
+Annotations:
+- `@Data` for simple data containers
+- `@Entity(name = "MY_TABLE_NAME")` to enable JPA on this entity
+- `@EntityListeners(AuditingEntityListener.class)` to enable auditing (created and last modified date)
+
+Rules:
+- No logic
+- Use simple types (e.g. String, int, boolean) to have no dependencies outside
+- Only use in database layer
+
+Example: `ReviewEntity.java`
