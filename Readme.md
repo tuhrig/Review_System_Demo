@@ -90,7 +90,9 @@ The E2E tests will then open a Chrome browser to navigate on the web application
 
 Domain IDs identify entities.
 They are unique business keys and should have a meaningful structure (not just database increments).
-A domain ID is annotated with `@Value` and is immutable.
+
+Annotations:
+- `@Value` as its immutable
 
 Example: `ReviewId.java`
 
@@ -98,3 +100,12 @@ Example: `ReviewId.java`
 
 A domain entity contains actual business functionality.
 Every domain entity is identified by its ID (not by its current data or state).
+
+Annotations:
+- `@Builder` to be able to build the entity when loading it from the database
+- `@AllArgsConstructor(access = AccessLevel.PRIVATE)` to enable the builder
+- `@Getter` to map the entity to REST resources
+- `@Slf4j` to log when executing business functionality
+- `@EqualsAndHashCode(of = "myEntityId")` to enforce equality based on the entity ID
+
+Example: `Review.java`

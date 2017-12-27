@@ -1,52 +1,28 @@
 package de.tuhrig.rsd.statistic.system.domain.statistic;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import de.tuhrig.rsd.common.domain.DomainEntity;
 import de.tuhrig.rsd.statistic.system.domain.review.ReviewStatus;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import java.util.Date;
-
+@Builder
 @Getter
 @Slf4j
-@NoArgsConstructor(access = AccessLevel.PRIVATE) // Jackson mapper default!
 @EqualsAndHashCode(of = "statisticId")
-@Entity
+@AllArgsConstructor(access = AccessLevel.PRIVATE) // For the builder!
 public class Statistic implements DomainEntity<StatisticId> {
 
-    @EmbeddedId
     private StatisticId statisticId;
-
-    @JsonIgnore
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
     private ReviewStatus reviewStatus;
-
-    @CreatedDate
-    @Column(updatable = false)
-    // This field is private as it should only be used for auditing. Don't use it for
-    // any application or business logic.
-    private Date createdDate;
-
-    @LastModifiedDate
-    // This field is private as it should only be used for auditing. Don't use it for
-    // any application or business logic.
-    private Date lastModifiedDate;
 
     public Statistic(ReviewStatus reviewStatus) {
         this.statisticId = StatisticId.createNew();
         this.reviewStatus = reviewStatus;
+        log.info("Initialized new statistic. [statisticId={}, reviewStatus={}]", statisticId, reviewStatus);
     }
 
     @Override

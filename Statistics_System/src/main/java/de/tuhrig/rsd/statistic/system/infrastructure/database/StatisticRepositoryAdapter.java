@@ -14,10 +14,12 @@ import org.springframework.stereotype.Component;
 public class StatisticRepositoryAdapter implements StatisticRepository {
 
     private final StatisticSpringDataRepository springDataRepository;
+    private final StatisticEntityMapper statisticEntityMapper;
 
     @Override
     public void save(Statistic review) {
-        springDataRepository.save(review);
+        StatisticEntity statisticEntity = statisticEntityMapper.fromDomain(review);
+        springDataRepository.save(statisticEntity);
     }
 
     @Override
