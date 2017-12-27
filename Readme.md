@@ -11,22 +11,17 @@ This is a boilerplate project to show a message driven architecture for Spring B
 Note that this application is highly opinionated and might not fit to your needs or preferences.
 
 Read more: http://tuhrig.de/spring-boot-boilerplate-project-with-activemq-and-angularjs
- 
+
+# Tags
+
+Spring Boot, AngularJS, Domain Driven Design, Lombok, ActiveMQ
+
 # Use cases of the demo
 
 - An user can submit a review about a product.
-- Each review must be checked and approved (or rejected).
+- Each review will be checked and approved (or rejected).
 - All approved reviews can be listed.
 - Statistics about how many reviews have been submitted, approved and rejected can be seen.
-
-# What to see in this demo
-
-- Usage of ActiveMQ to enable an async message-driven communication between systems.
-- Basic project setup for Spring Boot (multi-module) projects with Gradle.
-- Setup of an embedded Zuul proxy to route requests from the AngularJS UI to different backend services.
-- Usage of Docker Compose for a local development environment.
-- Configuration of Spring Data and Flyway for database access and setup.
-- Usage of Lombok annotations for readable and clutter-free Java code.
 
 # Systems
 
@@ -89,11 +84,17 @@ ActiveMQ Admin Console: http://localhost:8161/admin (Credentials: admin / admin)
 In order to run the E2E tests, all four systems (review, statistics, checking and UI) must be running.
 The E2E tests will then open a Chrome browser to navigate on the web application.
 
-# Links to my related blog posts
+# Developer Notes 
 
-- A description of the boilerplate project on my blog. // http://tuhrig.de/spring-boot-boilerplate-project-with-activemq-and-angularjs    
-    
-- Using ActiveMQ virtual topics to send events between systems and handle errors (failing event consumption).     
- // http://tuhrig.de/effective-error-handling-for-activemq-topics    
- 
-- A comparison of various Java and JavaScript build tools (used in this project). // http://tuhrig.de/java-vs-javascript-build-tools 
+## Domain IDs
+
+Domain IDs identify entities.
+They are unique business keys and should have a meaningful structure (not just database increments).
+A domain ID is annotated with `@Value` and is immutable.
+
+Example: `ReviewId.java`
+
+## Domain Entities
+
+A domain entity contains actual business functionality.
+Every domain entity is identified by its ID (not by its current data or state).
