@@ -1,15 +1,12 @@
 package de.tuhrig.rsd.checking.system.domain;
 
-import com.fasterxml.jackson.annotation.JsonValue;
 import de.tuhrig.rsd.common.domain.DomainEntityId;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
+import lombok.Value;
 
-@Getter
-@EqualsAndHashCode
+@Value
 public class ReviewId implements DomainEntityId {
 
-    private String reviewId;
+    private final String reviewId;
 
     public ReviewId(String reviewId) {
         if (!reviewId.matches("2([0-9]{7})-R-\\d{5}")) {
@@ -19,7 +16,6 @@ public class ReviewId implements DomainEntityId {
     }
 
     @Override
-    @JsonValue
     public String toString() {
         return reviewId;
     }

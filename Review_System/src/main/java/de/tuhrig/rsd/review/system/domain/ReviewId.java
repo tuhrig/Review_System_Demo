@@ -6,7 +6,7 @@ import lombok.Value;
 @Value
 public class ReviewId implements DomainEntityId {
 
-    private String reviewId;
+    private final String reviewId;
 
     public static ReviewId createNew() {
         return ReviewIdGenerator.createNew();
