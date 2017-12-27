@@ -1,8 +1,5 @@
 package de.tuhrig.rsd.statistic.system.infrastructure.jms;
 
-import de.tuhrig.rsd.statistic.system.domain.review.ReviewApprovedEvent;
-import de.tuhrig.rsd.statistic.system.domain.review.ReviewRejectedEvent;
-import de.tuhrig.rsd.statistic.system.domain.review.ReviewSubmittedEvent;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConversionException;
 import org.springframework.jms.support.converter.MessageConverter;
@@ -11,8 +8,8 @@ import org.springframework.jms.support.converter.MessageType;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.Session;
-import java.util.HashMap;
-import java.util.Map;
+
+import static de.tuhrig.rsd.common.infrastructure.jms.TypeIdMappingFactory.getTypeIdMapping;
 
 public class JmsMessageConverter implements MessageConverter {
 
@@ -24,15 +21,7 @@ public class JmsMessageConverter implements MessageConverter {
         // in the UI of the broker. The default would be a byte message.
         jacksonMessageConverter.setTargetType(MessageType.TEXT);
         jacksonMessageConverter.setTypeIdPropertyName("_type");
-        jacksonMessageConverter.setTypeIdMappings(typeIdMappings());
-    }
-
-    private Map<String, Class<?>> typeIdMappings() {
-        HashMap<String, Class<?>> typeIdMappings = new HashMap<>();
-        typeIdMappings.put("REVIEW_SUBMITTED_EVENT", ReviewSubmittedEvent.class);
-        typeIdMappings.put("REVIEW_APPROVED_EVENT", ReviewApprovedEvent.class);
-        typeIdMappings.put("REVIEW_REJECTED_EVENT", ReviewRejectedEvent.class);
-        return typeIdMappings;
+        jacksonMessageConverter.setTypeIdMappings(getTypeIdMapping());
     }
 
     @Override

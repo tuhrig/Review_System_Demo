@@ -8,20 +8,20 @@ import java.util.stream.Collectors;
 
 public class TypeIdMappingFactory {
 
-    public Map<String, Class<?>> getTypeIdMapping() {
+    public static Map<String, Class<?>> getTypeIdMapping() {
         return SubclassFinder
                 .findAllSubtypes(DomainEvent.class, "de/tuhrig/rsd")
                 .stream()
                 .collect(Collectors.toMap((Class clazz) -> getClassName(clazz), clazz -> clazz));
     }
 
-    private String getClassName(Class clazz) {
+    private static String getClassName(Class clazz) {
         String className = clazz.getSimpleName();
         className = camelCaseToUpperCase(className);
         return className.toUpperCase();
     }
 
-    private String camelCaseToUpperCase(String string) {
+    private static String camelCaseToUpperCase(String string) {
         String[] parts = string.split("(?<=[a-z])(?=[A-Z])");
         return String.join("_", parts);
     }
