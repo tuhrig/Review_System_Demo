@@ -1,7 +1,7 @@
 package de.tuhrig.rsd.checking.system.ports.event;
 
 import de.tuhrig.rsd.checking.system.application.CheckingService;
-import de.tuhrig.rsd.checking.system.domain.Review;
+import de.tuhrig.rsd.checking.system.domain.Check;
 import de.tuhrig.rsd.checking.system.domain.ReviewId;
 import de.tuhrig.rsd.checking.system.domain.ReviewSubmittedEvent;
 import lombok.AllArgsConstructor;
@@ -19,11 +19,11 @@ public class ReviewSubmittedEventListener {
             selector = "_type = 'REVIEW_SUBMITTED_EVENT'"
     )
     public void onEvent(ReviewSubmittedEvent reviewSubmittedEvent) {
-        Review review = new Review(
+        Check check = new Check(
                 new ReviewId(reviewSubmittedEvent.getReviewId()),
                 reviewSubmittedEvent.getSubject(),
                 reviewSubmittedEvent.getContent()
         );
-        checkingService.checkReview(review);
+        checkingService.checkReview(check);
     }
 }

@@ -2,7 +2,6 @@ package de.tuhrig.rsd.checking.system.domain;
 
 import de.tuhrig.rsd.common.domain.DomainEntity;
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,9 +10,8 @@ import java.util.Arrays;
 
 @Getter
 @Slf4j
-@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PRIVATE) // Jackson mapper default!
-public class Review implements DomainEntity<ReviewId> {
+public class Check implements DomainEntity<ReviewId> {
 
     // A list of "bad words" which are considered an inappropriate language. Any
     // review containing one of these words will be rejected.
@@ -24,15 +22,14 @@ public class Review implements DomainEntity<ReviewId> {
     };
 
     private ReviewId reviewId;
-    private String subject;
-    private String content;
+    private String text;
     private String rejectionReason;
     private boolean approved;
 
-    public Review(ReviewId reviewId, String subject, String content) {
+    public Check(ReviewId reviewId, String subject, String content) {
         this.reviewId = reviewId;
-        this.subject = subject;
-        this.content = content;
+        this.text = subject + " " + content;
+        log.info("New check initialized for review. [reviewId={}]", reviewId);
     }
 
     /**
@@ -43,7 +40,7 @@ public class Review implements DomainEntity<ReviewId> {
      */
     public void check() {
         boolean containsInappropriateContent = Arrays.stream(INAPPROPRIATE_CONTENT)
-                                                     .anyMatch(content.toLowerCase()::contains);
+                                                     .anyMatch(text.toLowerCase()::contains);
         if(containsInappropriateContent) {
             reject("Your review contains inappropriate content");
         } else {

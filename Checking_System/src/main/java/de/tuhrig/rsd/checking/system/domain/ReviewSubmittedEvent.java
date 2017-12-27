@@ -8,5 +8,4 @@ public class ReviewSubmittedEvent implements DomainEvent {
     private String reviewId;
     private String subject;
     private String content;
-    private int rating;
 }
