@@ -1,24 +1,21 @@
 package de.tuhrig.rsd.review.system.ports.event;
 
+import de.tuhrig.rsd.common.application.MessageHandler;
 import de.tuhrig.rsd.review.system.application.ReviewCheckingResultService;
 import de.tuhrig.rsd.review.system.domain.ReviewApprovedEvent;
 import de.tuhrig.rsd.review.system.domain.ReviewId;
 import lombok.AllArgsConstructor;
-import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 @Component
 @AllArgsConstructor
-public class ReviewApprovedEventListener {
+public class ReviewApprovedEventListener extends MessageHandler<ReviewApprovedEvent> {
 
     private ReviewCheckingResultService reviewCheckingResultService;
 
-    @JmsListener(
-            destination = "Consumer.review_system.VirtualTopic.Events",
-            selector = "_type = 'REVIEW_APPROVED_EVENT'"
-    )
-    public void onEvent(ReviewApprovedEvent reviewApprovedEvent) {
-        ReviewId reviewId = new ReviewId(reviewApprovedEvent.getReviewId()) ;
+    @Override
+    public void onMessage(ReviewApprovedEvent reviewApprovedEvent) {
+        ReviewId reviewId = new ReviewId(reviewApprovedEvent.getReviewId());
         reviewCheckingResultService.approve(reviewId);
     }
 }

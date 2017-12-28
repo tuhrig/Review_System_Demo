@@ -17,7 +17,7 @@ public class ReviewApprovedEventListener {
 
     @JmsListener(
             destination = "Consumer.statistics_system.VirtualTopic.Events",
-            selector = "_type = 'REVIEW_APPROVED_EVENT'"
+            selector = "_type = 'ReviewApprovedEvent'"
     )
     public void onEvent(ReviewApprovedEvent event) {
         reviewStatisticsService.reviewWasProcessed(ReviewStatus.APPROVED);

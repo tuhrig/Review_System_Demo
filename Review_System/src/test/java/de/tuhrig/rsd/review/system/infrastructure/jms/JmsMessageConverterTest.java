@@ -53,14 +53,14 @@ public class JmsMessageConverterTest {
         TextMessage message = (TextMessage) jmsMessageConverter.toMessage(event, session());
 
         assertThat(message.getText()).isEqualTo("{\"reviewId\":\"some-review-id\",\"subject\":\"A review\",\"content\":\"This is some content\",\"rating\":5}");
-        assertThat(message.getStringProperty("_type")).isEqualTo("REVIEW_SUBMITTED_EVENT");
+        assertThat(message.getStringProperty("_type")).isEqualTo("ReviewSubmittedEvent");
     }
 
     @Test
     public void should_Map_TextMessageWithJson_To_ReviewSubmittedEvent() throws JMSException {
         TextMessage message = new ActiveMQTextMessage();
         message.setText("{\"reviewId\":\"some-review-id\",\"subject\":\"A review\",\"content\":\"This is some content\",\"rating\":5}");
-        message.setStringProperty("_type", "REVIEW_SUBMITTED_EVENT");
+        message.setStringProperty("_type", "ReviewSubmittedEvent");
 
         ReviewSubmittedEvent event = (ReviewSubmittedEvent) jmsMessageConverter.fromMessage(message);
 
@@ -82,14 +82,14 @@ public class JmsMessageConverterTest {
         TextMessage message = (TextMessage) jmsMessageConverter.toMessage(event, session());
 
         assertThat(message.getText()).isEqualTo("{\"reviewId\":\"some-review-id\"}");
-        assertThat(message.getStringProperty("_type")).isEqualTo("REVIEW_APPROVED_EVENT");
+        assertThat(message.getStringProperty("_type")).isEqualTo("ReviewApprovedEvent");
     }
 
     @Test
     public void should_Map_TextMessageWithJson_To_ReviewApprovedEvent() throws JMSException {
         TextMessage message = new ActiveMQTextMessage();
         message.setText("{\"reviewId\":\"some-review-id\"}");
-        message.setStringProperty("_type", "REVIEW_APPROVED_EVENT");
+        message.setStringProperty("_type", "ReviewApprovedEvent");
 
         ReviewApprovedEvent event = (ReviewApprovedEvent) jmsMessageConverter.fromMessage(message);
 
@@ -109,14 +109,14 @@ public class JmsMessageConverterTest {
         TextMessage message = (TextMessage) jmsMessageConverter.toMessage(event, session());
 
         assertThat(message.getText()).isEqualTo("{\"reviewId\":\"some-review-id\",\"reason\":\"My reason\"}");
-        assertThat(message.getStringProperty("_type")).isEqualTo("REVIEW_REJECTED_EVENT");
+        assertThat(message.getStringProperty("_type")).isEqualTo("ReviewRejectedEvent");
     }
 
     @Test
     public void should_Map_TextMessageWithJson_To_ReviewRejectedEvent() throws JMSException {
         TextMessage message = new ActiveMQTextMessage();
         message.setText("{\"reviewId\":\"some-review-id\",\"reason\":\"My reason\"}");
-        message.setStringProperty("_type", "REVIEW_REJECTED_EVENT");
+        message.setStringProperty("_type", "ReviewRejectedEvent");
 
         ReviewRejectedEvent event = (ReviewRejectedEvent) jmsMessageConverter.fromMessage(message);
 

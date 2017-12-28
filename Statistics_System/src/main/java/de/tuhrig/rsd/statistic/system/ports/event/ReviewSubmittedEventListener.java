@@ -17,7 +17,7 @@ public class ReviewSubmittedEventListener {
 
     @JmsListener(
             destination = "Consumer.statistics_system.VirtualTopic.Events",
-            selector = "_type = 'REVIEW_SUBMITTED_EVENT'"
+            selector = "_type = 'ReviewSubmittedEvent'"
     )
     public void onEvent(ReviewSubmittedEvent event) {
         reviewStatisticsService.reviewWasProcessed(ReviewStatus.OPEN);

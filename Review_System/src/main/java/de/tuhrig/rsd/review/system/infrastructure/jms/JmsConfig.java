@@ -12,6 +12,8 @@ import org.springframework.boot.autoconfigure.jms.activemq.ActiveMQAutoConfigura
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.annotation.EnableJms;
+import org.springframework.jms.config.DefaultJmsListenerContainerFactory;
+import org.springframework.jms.config.JmsListenerContainerFactory;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.support.converter.MessageConverter;
 
@@ -78,5 +80,13 @@ public class JmsConfig {
         connectionFactory.setRedeliveryPolicy(redeliveryPolicy());
         connectionFactory.setWatchTopicAdvisories(false);
         return connectionFactory;
+    }
+
+    @Bean
+    public JmsListenerContainerFactory topicFactory(ConnectionFactory connectionFactory) {
+        DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
+        factory.setConnectionFactory(connectionFactory);
+        factory.setPubSubDomain(true);
+        return factory;
     }
 }

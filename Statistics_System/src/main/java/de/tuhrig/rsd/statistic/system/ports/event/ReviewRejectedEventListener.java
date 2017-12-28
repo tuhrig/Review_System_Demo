@@ -17,7 +17,7 @@ public class ReviewRejectedEventListener {
 
     @JmsListener(
             destination = "Consumer.statistics_system.VirtualTopic.Events",
-            selector = "_type = 'REVIEW_REJECTED_EVENT'"
+            selector = "_type = 'ReviewRejectedEvent'"
     )
     public void onEvent(ReviewRejectedEvent event) {
         reviewStatisticsService.reviewWasProcessed(ReviewStatus.REJECTED);

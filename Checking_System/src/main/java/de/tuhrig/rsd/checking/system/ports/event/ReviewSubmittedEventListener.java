@@ -16,7 +16,7 @@ public class ReviewSubmittedEventListener {
 
     @JmsListener(
             destination = "Consumer.checking_system.VirtualTopic.Events",
-            selector = "_type = 'REVIEW_SUBMITTED_EVENT'"
+            selector = "_type = 'ReviewSubmittedEvent'"
     )
     public void onEvent(ReviewSubmittedEvent reviewSubmittedEvent) {
         Check check = new Check(
