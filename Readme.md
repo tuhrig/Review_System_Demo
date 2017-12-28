@@ -62,8 +62,10 @@ Run it:
     
 Go to: http://localhost:9002
 
-ActiveMQ Admin Console: http://localhost:8161/admin (Credentials: admin / admin)
-H2 Web Console: http://localhost:9001/h2-console
+For development:
+
+- ActiveMQ Admin Console: http://localhost:8161/admin (Credentials: admin / admin)
+- H2 Web Console: http://localhost:9001/h2-console (see `application.properties for settings)
 
 # Test
 
@@ -152,5 +154,48 @@ Rules:
 - No logic
 - Use simple types (e.g. String, int, boolean) to have no dependencies outside
 - Only use in database layer
+- An entity mapper class to convert to and from the domain layer
 
 Example: `ReviewEntity.java`
+
+## Event Listeners
+
+I've implemented two different types of event listeners. 
+Both solutions have their own pros and cons.
+
+### Type 1: JMS based listeners
+
+    @Component
+    public class ReviewSubmittedEventListener {
+    
+        @JmsListener(
+                destination = "Consumer.statistics_system.VirtualTopic.Events",
+                selector = "_type = 'ReviewSubmittedEvent'"
+        )
+        public void onEvent(ReviewSubmittedEvent event) {
+            // pass the event to the service layer
+        }
+    }
+
+Rules:
+- No logic. Just take the event and pass it to a service
+- Use of Spring's `@JmsListener` annotation
+
+Example: `ReviewSubmittedEventListener.java`
+
+### Type 2: Database based listeners
+
+    @Component
+    public class ReviewApprovedEventListener extends MessageHandler<ReviewApprovedEvent> {
+    
+        @Override
+        public void onMessage(ReviewApprovedEvent reviewApprovedEvent) {
+            // pass the event to the service layer
+        }
+    }
+    
+Rules:
+- No logic. Just take the event and pass it to a service
+- Extend the custom `MessageHandler` class which polls a database table for events
+    
+Example: `ReviewApprovedEventListener.java`    
