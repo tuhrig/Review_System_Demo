@@ -3,6 +3,7 @@ package de.tuhrig.rsd.checking.system.infrastructure.jms;
 import de.tuhrig.rsd.checking.system.domain.ReviewApprovedEvent;
 import de.tuhrig.rsd.checking.system.domain.ReviewRejectedEvent;
 import de.tuhrig.rsd.checking.system.domain.ReviewSubmittedEvent;
+import de.tuhrig.rsd.common.infrastructure.jms.JmsMessageConverter;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.command.ActiveMQTextMessage;
 import org.junit.Before;

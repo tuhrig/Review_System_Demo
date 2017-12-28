@@ -1,4 +1,4 @@
-package de.tuhrig.rsd.statistic.system.infrastructure.jms;
+package de.tuhrig.rsd.common.infrastructure.jms;
 
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConversionException;

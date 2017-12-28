@@ -1,5 +1,6 @@
 package de.tuhrig.rsd.statistic.system.infrastructure.jms;
 
+import de.tuhrig.rsd.common.infrastructure.jms.JmsMessageConverter;
 import de.tuhrig.rsd.statistic.system.domain.review.ReviewApprovedEvent;
 import de.tuhrig.rsd.statistic.system.domain.review.ReviewRejectedEvent;
 import de.tuhrig.rsd.statistic.system.domain.review.ReviewSubmittedEvent;
