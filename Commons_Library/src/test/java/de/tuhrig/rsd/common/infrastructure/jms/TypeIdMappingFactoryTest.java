@@ -13,14 +13,14 @@ public class TypeIdMappingFactoryTest {
 
     @Test
     public void should_ReturnIdTypeMapping_ForAllEvents() {
-        Map<String, Class<?>> mapping = new TypeIdMappingFactory().getTypeIdMapping();
+        Map<String, Class<?>> mapping = TypeIdMappingFactory.getTypeIdMapping();
         assertThat(mapping).isEqualTo(expectedMappings());
     }
 
     private HashMap<String, Class<?>> expectedMappings() {
         HashMap<String, Class<?>> typeIdMappings = new HashMap<>();
-        typeIdMappings.put("MY_EVENT_A", MyEventA.class);
-        typeIdMappings.put("MY_EVENT_B", MyEventB.class);
+        typeIdMappings.put("MyEventA", MyEventA.class);
+        typeIdMappings.put("MyEventB", MyEventB.class);
         return typeIdMappings;
     }
 }
