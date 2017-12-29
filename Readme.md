@@ -89,6 +89,10 @@ The E2E tests will then open a Chrome browser to navigate on the web application
 
 # Developer Notes 
 
+## Packages
+
+The package structure follows the Ports-And-Adapters pattern.
+
 ## Domain IDs
 
 Domain IDs identify entities.
@@ -199,3 +203,16 @@ Rules:
 - Extend the custom `MessageHandler` class which polls a database table for events
     
 Example: `ReviewApprovedEventListener.java`    
+
+## Domain Object Mapper
+
+Whenever we map between the domain layer and any other layer (e.g. persistence, REST) we use a dedicated mapper to do so.
+Although it's not needed, every mapper should implement the `DomainObjectMapper.java` interface.
+By implementing this interface, the concept of a dedicated mapper class is underlined and every mapper follows the same structure.
+
+Rules:
+- Don't map in-place - write a mapper object
+- Implement the `DomainObjectMapper.java` interface to underline the concept
+- Accept `null` and simply return `null`
+
+Example: `MessageEntityMapper.java`

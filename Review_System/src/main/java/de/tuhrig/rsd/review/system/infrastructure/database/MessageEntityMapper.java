@@ -1,10 +1,11 @@
 package de.tuhrig.rsd.review.system.infrastructure.database;
 
 import de.tuhrig.rsd.common.application.Message;
+import de.tuhrig.rsd.common.utils.DomainObjectMapper;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MessageEntityMapper {
+public class MessageEntityMapper implements DomainObjectMapper<Message, MessageEntity> {
 
     public Message toDomain(MessageEntity messageEntity) {
 

@@ -48,8 +48,6 @@ public class Message {
                                     String content,
                                     String type,
                                     String listener) {
-
-        log.trace("New message created. [listener={}, event={}]", listener, type);
         return Message
                 .builder()
                 .id(id)
