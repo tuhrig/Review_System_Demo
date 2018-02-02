@@ -60,6 +60,13 @@ Run it:
     docker-compose up
     ./gradlew bootrun --parallel --max-workers=4
     
+Or:
+
+    ./gradlew review_system:bootrun
+    ./gradlew statistics_system:bootrun
+    ./gradlew checking_system:bootrun
+    ./gradlew user_interface_system:bootrun   
+    
 Go to: http://localhost:9002
 
 For development:
